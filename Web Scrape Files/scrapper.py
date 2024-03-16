@@ -9,7 +9,7 @@ from time import sleep
 
 
 def enter_username_without_redirection(url, username, password, query):
-    # Initialize the WebDriver (assuming Chrome WebDriver here)
+    # Initialize the WebDriver
     driver = webdriver.Chrome()
 
     html_content = """
@@ -23,10 +23,7 @@ def enter_username_without_redirection(url, username, password, query):
     """
 
     try:
-        # Open the URL
         driver.get(url)
-
-        # Wait for the page to load (optional)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'username')))
 
         # Find the input elements for username and password by ID
@@ -36,8 +33,6 @@ def enter_username_without_redirection(url, username, password, query):
         # Enter the provided username and password
         username_element.send_keys(username)
         password_element.send_keys(password)
-
-        # Submit the form by pressing Enter (assuming Enter key submits the form)
         password_element.send_keys(Keys.RETURN)
 
         # Wait for the prompt to appear
@@ -58,28 +53,19 @@ def enter_username_without_redirection(url, username, password, query):
         textarea = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'textarea.searchInput')))
         textarea.send_keys(query)
         textarea.send_keys(Keys.RETURN)
-
-        sleep(3)  # Give some time for the results to load
+        sleep(3)
 
         wrapper_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.ng-scope.ng-isolate-scope')))
-
-        # Get the HTML content of the wrapper element
         html_content = wrapper_element.get_attribute('outerHTML')
-
-        # Parse the HTML content using BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
-
         with open('scraped_data.txt', 'w', encoding='utf-8') as file:
             file.write(str(soup))
 
     finally:
-        # Close the WebDriver session
         driver.quit()
 
-
-# Example usage:
-url = "https://25live.collegenet.com/manhattan"  # Replace with the actual URL
-username = "your username"  # Replace with the actual username
+url = "https://25live.collegenet.com/manhattan"
+username = "your username"  
 password = "your password"
 query = "102"
 enter_username_without_redirection(url, username, password, query)
