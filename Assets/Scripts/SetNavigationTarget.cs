@@ -18,10 +18,8 @@ public class SetNavigationTarget : MonoBehaviour
 
     private void Update ()
     {
-        Debug.Log("In Update.....");
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            Debug.Log("What is going on???");
             lineToggle = !lineToggle;
 
             if (lineToggle) // Only try to calculate and display the path if lineToggle is enabled
