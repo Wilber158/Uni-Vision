@@ -1,24 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class SetNavigationTarget : MonoBehaviour {
-
+public class SetNavigationTarget : MonoBehaviour
+{
     [SerializeField]
-    private Camera topDownCamera;
-    [SerializeField]
-    private GameObject navTargetObject;
+    private GameObject navTargetObject; // Your target object
 
     private UnityEngine.AI.NavMeshPath path;
     private LineRenderer line;
-
     private bool lineToggle = false;
 
     private void Start ()
     {
         path = new UnityEngine.AI.NavMeshPath();
-        line = transform.GetComponent<LineRenderer>();
-
+        line = GetComponent<LineRenderer>();
     }
 
     private void Update ()
@@ -26,17 +21,34 @@ public class SetNavigationTarget : MonoBehaviour {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             lineToggle = !lineToggle;
-        }
 
-        if (lineToggle)
-        {
-            UnityEngine.AI.NavMesh.CalculatePath(transform.position, navTargetObject.transform.position, UnityEngine.AI.NavMesh.AllAreas, path);
-            line.positionCount = path.corners.Length;
-            line.SetPositions(path.corners);
-            line.enabled = true;
+            if (lineToggle) // Only try to calculate and display the path if lineToggle is enabled
+            {
+                Vector3 indicatorPosition = transform.position;
+                NavMeshHit hit;
+
+                // Check if the indicator's position is inside the NavMesh
+                if (NavMesh.SamplePosition(indicatorPosition, out hit, 1.0f, NavMesh.AllAreas))
+                {
+                    indicatorPosition = hit.position; // Snap indicator to the nearest valid NavMesh position
+                }
+                else
+                {
+                    // If outside, you might want to handle this differently, e.g., disable path display
+                    line.enabled = false;
+                    return;
+                }
+
+                // Assuming navTargetObject is always within NavMesh bounds for simplicity
+                NavMesh.CalculatePath(indicatorPosition, navTargetObject.transform.position, NavMesh.AllAreas, path);
+                line.positionCount = path.corners.Length;
+                line.SetPositions(path.corners);
+                line.enabled = true;
+            }
+            else
+            {
+                line.enabled = false; // Disable the line if toggled off
+            }
         }
     }
-
-
-
 }
