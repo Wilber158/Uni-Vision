@@ -23,6 +23,31 @@ public class SceneUIManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!Array.Exists(scenesWithCanvas, element => element == scene.name))
+        {
+            Instantiate(canvasPrefab);
+
+            // Also ensure there's an EventSystem
+            if (FindObjectOfType<EventSystem>() == null)
+            {
+                Instantiate(new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule)));
+            }
+        }
+        else
+        {
+            // If the scene IS in the scenesWithCanvas array, destroy the persistent GameObject
+            Destroy(gameObject);
+        }
+    }
+
+
+    /*
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (Array.Exists(scenesWithCanvas, element => element == scene.name))
@@ -44,6 +69,7 @@ public class SceneUIManager : MonoBehaviour
             }
         }
     }
+    */
 }
 
 
