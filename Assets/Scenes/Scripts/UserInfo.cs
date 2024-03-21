@@ -1,18 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class UserInfo : MonoBehaviour
+public class UserInfoManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TMP_InputField class1;
+    public TMP_InputField class2;
+    public TMP_InputField class3;
+    public TMP_InputField class4;
+    public TMP_InputField class5;
+    public TMP_InputField class6;
+    public Button saveButton;
+
     void Start()
     {
-        
+        LoadUserInfo();
+
+        // Remove the listener if it was previously added to avoid duplicates
+        saveButton.onClick.RemoveListener(SaveUserInfo);
+        saveButton.onClick.AddListener(SaveUserInfo);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Load user info from PlayerPrefs
+    void LoadUserInfo()
     {
-        
+        class1.text = PlayerPrefs.GetString("Class1", "");
+        class2.text = PlayerPrefs.GetString("Class2", "");
+        class3.text = PlayerPrefs.GetString("Class3", "");
+        class4.text = PlayerPrefs.GetString("Class4", "");
+        class5.text = PlayerPrefs.GetString("Class5", "");
+        class6.text = PlayerPrefs.GetString("Class6", "");
+    }
+
+    // Save user info to PlayerPrefs
+    void SaveUserInfo()
+    {
+        PlayerPrefs.SetString("Class1", class1.text);
+        PlayerPrefs.SetString("Class2", class2.text);
+        PlayerPrefs.SetString("Class3", class3.text);
+        PlayerPrefs.SetString("Class4", class4.text);
+        PlayerPrefs.SetString("Class5", class5.text);
+        PlayerPrefs.SetString("Class6", class6.text);
+        PlayerPrefs.Save(); // Save the changes
     }
 }
+
+    /*
+    public void ClearUserInfo()
+    {
+        PlayerPrefs.DeleteKey("UserName");
+        PlayerPrefs.DeleteKey("UserInfo");
+        PlayerPrefs.Save();
+        
+        // Clear input fields
+        userNameInputField.text = "";
+        userInfoInputField.text = "";
+    }
+    */
+
+
