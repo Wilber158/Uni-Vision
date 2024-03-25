@@ -6,20 +6,34 @@ using System.Collections.Generic;
 using System.IO;
 using SeleniumExtras.WaitHelpers;
 using System;
+using System.Reflection;
 
 public class SeleniumExample : MonoBehaviour
 {
+    private AddTextToTextMeshPro addTextToTextMeshPro;
+    private int boxCounter;
+    public int GetBoxCounter()
+    {
+        return boxCounter;
+    }
     void Start()
     {
-        // Call the method to scrape the data
-        Dictionary<string, List<string>> eventData = ScrapeEventData();
+        GameObject textMeshProObject = FindObjectOfType<AddTextToTextMeshPro>().gameObject;
+        addTextToTextMeshPro = textMeshProObject.GetComponent<AddTextToTextMeshPro>();
+        string textValue = addTextToTextMeshPro.Text;
 
+        // Call the method to scrape the data
+        Dictionary<string, List<string>> eventData = ScrapeEventData(textValue);
+
+        //get dictionary count for box generation
+        boxCounter = GetDictionaryValuesCount(eventData);
         // Write the extracted event data to a text file
         string filePath = Path.Combine(Application.persistentDataPath, "schedule.txt");
         WriteEventDataToFile(eventData, filePath);
+        
     }
 
-    Dictionary<string, List<string>> ScrapeEventData()
+    Dictionary<string, List<string>> ScrapeEventData(string textValue)
     {
         // Initialize dictionary to store event data
         Dictionary<string, List<string>> eventData = new Dictionary<string, List<string>>();
@@ -57,7 +71,7 @@ public class SeleniumExample : MonoBehaviour
             // Enter the query in the search input field and press Enter
             System.Threading.Thread.Sleep(15000); // Not recommended, but Unity doesn't have async support by default
             IWebElement searchInput = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea.searchInput")));
-            searchInput.SendKeys("rlc 102");
+            searchInput.SendKeys(textValue);
             searchInput.SendKeys(Keys.Return);
 
             // Wait for the event items to load
@@ -126,5 +140,14 @@ public class SeleniumExample : MonoBehaviour
             }
             Debug.Log("Event data count: " + eventData.Count); // Output the count of event data
         }
+    }
+    int GetDictionaryValuesCount(Dictionary<string, List<string>> dictionary)
+    {
+        int count = 0;
+        foreach (var list in dictionary.Values)
+        {
+            count += list.Count;
+        }
+        return count;
     }
 }

@@ -1,15 +1,20 @@
+using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace MyNamespace
 {
+
     public class createBoxes : MonoBehaviour
     {
-        public int boxCount = 7; // Number of boxes to create
-        public Sprite boxSprite; // Sprite for the box image
+        public SeleniumExample scrapper;
+        private Sprite boxSprite;
 
         void Start()
         {
+        int boxCount = scrapper.GetBoxCounter();
+            
             // Get the Canvas to be the parent of the boxes
             GameObject content = GameObject.Find("content");
 
@@ -27,7 +32,7 @@ namespace MyNamespace
 
                 // Assign the box image to the Image component
                 image.sprite = boxSprite;
-                image.color = Color.black;
+                image.color = new Color(253f / 255f, 253f / 255f, 253f / 255f);
 
                 // Set the size and position of the box
                 RectTransform rectTransform = box.GetComponent<RectTransform>();

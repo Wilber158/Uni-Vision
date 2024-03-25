@@ -1,12 +1,20 @@
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
+using MyNamespace;
 
 public class AddTextToTextMeshPro : MonoBehaviour
 {
+    private string text = "RLC 102";
+
+    // Public property to access the text variable
+    public string Text
+    {
+        get { return text; }
+    }
     void Start()
     {
-        // Call the AddTextToTextMeshPro function with "RLC 102" as a parameter
-        AddTextToTextMeshProP(" RLC 102");
+            AddTextToTextMeshProP(text);
     }
 
     void AddTextToTextMeshProP(string textToAdd)
