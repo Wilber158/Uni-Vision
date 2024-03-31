@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/App Development/RLC_1st_Floor.unity
+    path: Assets/Scenes/App Development/RLC_Building.unity
     guid: f2845890a8e4d4f93be88d857c38a1e7
   - enabled: 0
     path: Assets/Scenes/App Development/AccountPage.unity
