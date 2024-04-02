@@ -7,6 +7,8 @@ using System.IO;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Reflection;
+using System.Linq;
+using System.Threading;
 
 public class SeleniumExample : MonoBehaviour
 {
@@ -43,14 +45,14 @@ public class SeleniumExample : MonoBehaviour
 
         // Set up Chrome WebDriver with the specified path
         ChromeOptions options = new ChromeOptions();
-        options.AddArgument("--headless"); // Optional: Run Chrome in headless mode
+        //options.AddArgument("--headless"); // Optional: Run Chrome in headless mode
         using (IWebDriver driver = new ChromeDriver(chromeDriverPath, options))
         {
             // Navigate to the website
             driver.Navigate().GoToUrl("https://25live.collegenet.com/manhattan");
 
             // Find username and password elements
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             IWebElement usernameElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("username")));
             IWebElement passwordElement = driver.FindElement(By.Id("password"));
 
@@ -60,23 +62,24 @@ public class SeleniumExample : MonoBehaviour
             passwordElement.SendKeys(Keys.Return);
 
             // Wait for the trust button to appear and click it
-            System.Threading.Thread.Sleep(1000); // Not recommended, but Unity doesn't have async support by default
             IWebElement trustButton = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("trust-browser-button")));
             trustButton.Click();
 
             // Navigate to the calendar page
-            System.Threading.Thread.Sleep(15000); // Not recommended, but Unity doesn't have async support by default
+            wait.Until(ExpectedConditions.UrlContains("https://25live.collegenet.com/pro/manhattan#!/home/search"));
             driver.Navigate().GoToUrl("https://25live.collegenet.com/pro/manhattan#!/home/search/location/calendar");
 
             // Enter the query in the search input field and press Enter
-            System.Threading.Thread.Sleep(15000); // Not recommended, but Unity doesn't have async support by default
             IWebElement searchInput = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea.searchInput")));
             searchInput.SendKeys(textValue);
             searchInput.SendKeys(Keys.Return);
 
             // Wait for the event items to load
-            System.Threading.Thread.Sleep(10000); // Adjust timing as needed
-            var tdElements = driver.FindElements(By.CssSelector("td.ngTD.CalendarCell.ngTD.ngZmid.ng-scope.CalendarCellToday.ngMonthclass1"));
+            Thread.Sleep(5000);
+            var tdElements1 = wait.Until(driver => driver.FindElements(By.CssSelector("td.ngTD.CalendarCell.ngTD.ngZmid.ng-scope.CalendarCellToday.ngMonthclass1")));
+            var tdElements2 = wait.Until(driver => driver.FindElements(By.CssSelector("td.ngTD.CalendarCell.ngTD.ngZmid.ng-scope.CalendarCellToday.ngMonthclass2")));
+            var tdElements = new List<IWebElement>(tdElements1);
+            tdElements.AddRange(tdElements2);
 
             // Ensure only one <td> element is found for today
             if (tdElements.Count == 1)

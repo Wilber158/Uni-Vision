@@ -1,0 +1,18 @@
+Class: CMPT 334
+Event Time: 8:00 am - 9:15 am
+
+Class: CMPT 102
+Event Time: 9:30 am - 10:45 am
+
+Class: CS Tutoring
+Event Time: 1:30 pm - 2:30 pm
+
+Class: CMPG 763
+Event Time: 1:30 pm - 2:45 pm
+
+Class: CMPT 363
+Event Time: 1:30 pm - 2:45 pm
+
+Class: CMPT 490
+Event Time: 3:00 pm - 5:20 pm
+

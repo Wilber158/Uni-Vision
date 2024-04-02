@@ -1,7 +1,5 @@
 using UnityEngine;
 using TMPro;
-using JetBrains.Annotations;
-using MyNamespace;
 
 public class AddTextToTextMeshPro : MonoBehaviour
 {
@@ -12,24 +10,31 @@ public class AddTextToTextMeshPro : MonoBehaviour
     {
         get { return text; }
     }
+
     void Start()
     {
-            AddTextToTextMeshProP(text);
+        AddTextToTextMeshProP(text);
     }
 
     void AddTextToTextMeshProP(string textToAdd)
     {
-        // Get the TextMeshProUGUI component attached to the same GameObject
-        TextMeshProUGUI textMeshPro = GetComponent<TextMeshProUGUI>();
+        // Get all components attached to the same GameObject
+        Component[] components = GetComponents<Component>();
 
-        if (textMeshPro != null)
+        // Loop through all components to find TextMeshProUGUI
+        foreach (Component component in components)
         {
-            // Append the provided text to the existing text of the TextMeshPro component
-            textMeshPro.text += textToAdd;
+            // Check if the component is a TextMeshProUGUI component
+            if (component.GetType() == typeof(TextMeshProUGUI))
+            {
+                // If found, cast it to TextMeshProUGUI and append textToAdd
+                TextMeshProUGUI textMeshPro = (TextMeshProUGUI)component;
+                textMeshPro.text += textToAdd;
+                return; // Exit the loop after finding TextMeshProUGUI
+            }
         }
-        else
-        {
-            Debug.LogWarning("TextMeshProUGUI component not found on the GameObject.");
-        }
+
+        // If TextMeshProUGUI component is not found, log a warning
+        Debug.LogWarning("TextMeshProUGUI component not found on the GameObject.");
     }
 }
