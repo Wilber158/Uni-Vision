@@ -18,14 +18,16 @@ namespace MyNamespace
             // Load the default font asset for TextMeshPro
             TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/ARIAL SDF");
 
-            // Load the schedule file from the Resources folder
-            TextAsset scheduleTextAsset = Resources.Load<TextAsset>("schedule");
+            string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
 
-            // Split the text of the schedule file into lines
-            string[] scheduleLines = scheduleTextAsset.text.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        // Read the content of the file
+            string scheduleTextAsset = File.ReadAllText(filePath);
 
-            // Loop to create the specified number of boxes
-            for (int i = 0; i < scheduleLines.Length-1; i += 2)
+                // Split the text of the schedule file into lines
+            string[] scheduleLines = scheduleTextAsset.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Loop to create the specified number of boxes
+                for (int i = 0; i < scheduleLines.Length-1; i += 2)
             {
                 // Create a new GameObject for the box
                 GameObject box = new GameObject("Box" + i);

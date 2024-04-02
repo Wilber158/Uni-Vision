@@ -30,7 +30,8 @@ public class SeleniumExample : MonoBehaviour
         //get dictionary count for box generation
         boxCounter = GetDictionaryValuesCount(eventData);
         // Write the extracted event data to a text file
-        string filePath = Path.Combine(Application.persistentDataPath, "schedule.txt");
+        string fileName = "schedule.txt";
+        string filePath = Path.Combine(Application.dataPath, "Resources", fileName);
         WriteEventDataToFile(eventData, filePath);
         
     }
@@ -132,6 +133,12 @@ public class SeleniumExample : MonoBehaviour
 
     void WriteEventDataToFile(Dictionary<string, List<string>> eventData, string filePath)
     {
+        if (File.Exists(filePath))
+        {
+            // Delete the file if it exists
+            File.Delete(filePath);
+            Debug.Log("Deleted existing file: " + filePath);
+        }
         using (StreamWriter writer = new StreamWriter(filePath))
         {
             foreach (KeyValuePair<string, List<string>> kvp in eventData)

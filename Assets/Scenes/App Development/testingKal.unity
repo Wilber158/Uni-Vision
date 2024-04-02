@@ -198,7 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875effc7656bb14cb90d7c4869a21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapper: {fileID: 0}
 --- !u!224 &1157382162 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4276416915789102302, guid: b4b69bdc19e86514086261b858900fa4,
@@ -473,6 +472,7 @@ GameObject:
   - component: {fileID: 2043690289}
   - component: {fileID: 2043690292}
   - component: {fileID: 2043690291}
+  - component: {fileID: 2043690293}
   m_Layer: 0
   m_Name: scrollArea
   m_TagString: Untagged
@@ -582,6 +582,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043690287}
   m_CullTransparentMesh: 1
+--- !u!114 &2043690293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043690287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91de7ce5ba2626b4bb021d4ff165f4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2047271171
 PrefabInstance:
   m_ObjectHideFlags: 0
