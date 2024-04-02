@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TargetDetection : MonoBehaviour
 {
+    public string TargetName { get; internal set; }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -8,7 +8,6 @@ namespace MyNamespace
 {
     public class createBoxes : MonoBehaviour
     {
-        private Sprite boxSprite;
 
         void Start()
         {
@@ -39,7 +38,6 @@ namespace MyNamespace
                 Image image = box.AddComponent<Image>();
 
                 // Assign the box image to the Image component
-                image.sprite = boxSprite;
                 image.color = new Color(253f / 255f, 253f / 255f, 253f / 255f);
 
                 // Set the size and position of the box

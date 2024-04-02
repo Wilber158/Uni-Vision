@@ -3,7 +3,9 @@ using TMPro;
 
 public class AddTextToTextMeshPro : MonoBehaviour
 {
-    private string text = "RLC 102";
+    private string text;
+    public TargetDetection targetDetection;
+
 
     // Public property to access the text variable
     public string Text
@@ -13,6 +15,26 @@ public class AddTextToTextMeshPro : MonoBehaviour
 
     void Start()
     {
+        try
+        {
+            // Find and store a reference to the GameObject with the TargetDetection script
+            targetDetection = FindObjectOfType<TargetDetection>();
+
+            if (targetDetection != null)
+            {
+                // Access the TargetName property using the getter method
+                string targetName = targetDetection.TargetName;
+                Debug.Log("Target name from scraper.cs: " + targetName);
+            }
+            else
+            {
+                Debug.LogWarning("TargetDetection script not found in the scene.");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error: " + e.Message);
+        }
         AddTextToTextMeshProP(text);
     }
 

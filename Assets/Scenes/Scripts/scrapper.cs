@@ -6,20 +6,17 @@ using System.Collections.Generic;
 using System.IO;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Reflection;
-using System.Linq;
 using System.Threading;
 
 public class SeleniumExample : MonoBehaviour
 {
     private AddTextToTextMeshPro addTextToTextMeshPro;
-    private int boxCounter;
-    public int GetBoxCounter()
-    {
-        return boxCounter;
-    }
+
+
+
     void Start()
     {
+        // Find and initialize AddTextToTextMeshPro component
         GameObject textMeshProObject = FindObjectOfType<AddTextToTextMeshPro>().gameObject;
         addTextToTextMeshPro = textMeshProObject.GetComponent<AddTextToTextMeshPro>();
         string textValue = addTextToTextMeshPro.Text;
@@ -27,13 +24,12 @@ public class SeleniumExample : MonoBehaviour
         // Call the method to scrape the data
         Dictionary<string, List<string>> eventData = ScrapeEventData(textValue);
 
-        //get dictionary count for box generation
-        boxCounter = GetDictionaryValuesCount(eventData);
+        // Get dictionary count for box generation
+
         // Write the extracted event data to a text file
         string fileName = "schedule.txt";
         string filePath = Path.Combine(Application.dataPath, "Resources", fileName);
         WriteEventDataToFile(eventData, filePath);
-        
     }
 
     Dictionary<string, List<string>> ScrapeEventData(string textValue)
@@ -47,7 +43,10 @@ public class SeleniumExample : MonoBehaviour
         // Set up Chrome WebDriver with the specified path
         ChromeOptions options = new ChromeOptions();
         //options.AddArgument("--headless"); // Optional: Run Chrome in headless mode
-        using (IWebDriver driver = new ChromeDriver(chromeDriverPath, options))
+
+        // Initialize WebDriver outside using block for later disposal
+        IWebDriver driver = new ChromeDriver(chromeDriverPath, options);
+        try
         {
             // Navigate to the website
             driver.Navigate().GoToUrl("https://25live.collegenet.com/manhattan");
@@ -118,6 +117,11 @@ public class SeleniumExample : MonoBehaviour
                 }
             }
         }
+        finally
+        {
+            // Dispose of WebDriver resources
+            driver.Quit();
+        }
 
         return eventData;
     }
@@ -150,14 +154,5 @@ public class SeleniumExample : MonoBehaviour
             }
             Debug.Log("Event data count: " + eventData.Count); // Output the count of event data
         }
-    }
-    int GetDictionaryValuesCount(Dictionary<string, List<string>> dictionary)
-    {
-        int count = 0;
-        foreach (var list in dictionary.Values)
-        {
-            count += list.Count;
-        }
-        return count;
     }
 }
