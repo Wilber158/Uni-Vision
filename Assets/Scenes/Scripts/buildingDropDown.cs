@@ -1,25 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems; // Required for the EventSystem
+using UnityEngine.EventSystems; 
 using TMPro;
 
-public class CustomDropdown : MonoBehaviour, IPointerDownHandler // Implement the interface
+public class CustomDropdown : MonoBehaviour, IPointerDownHandler 
 {
     public TMP_InputField searchInput;
     public GameObject optionsPanel;
-    public Button[] optionButtons; // Assign your option buttons here
+    public Button[] optionButtons; 
 
     void Start()
     {
-        optionsPanel.SetActive(false); // Make sure the panel is hidden on start
-        // Assign the click event to the buttons
+        optionsPanel.SetActive(false); 
         foreach (Button btn in optionButtons)
         {
             btn.onClick.AddListener(() => OnOptionSelected(btn));
         }
     }
 
-    // Implement the IPointerDownHandler method
     public void OnPointerDown(PointerEventData eventData)
     {
         // Show the options panel when the InputField is clicked
@@ -28,11 +26,7 @@ public class CustomDropdown : MonoBehaviour, IPointerDownHandler // Implement th
 
     private void OnOptionSelected(Button selectedButton)
     {
-        searchInput.text = selectedButton.GetComponentInChildren<TextMeshProUGUI>().text; // Set text from button to input field
-        optionsPanel.SetActive(false); // Hide options panel
-        /*
-        searchInput.ActivateInputField(); // Optional: To refocus on the InputField
-        searchInput.Select(); // Optional: Highlight the text
-        */
+        searchInput.text = selectedButton.GetComponentInChildren<TextMeshProUGUI>().text; // Send text from button to input field for user to see
+        optionsPanel.SetActive(false); // Hide panel
     }
 }
