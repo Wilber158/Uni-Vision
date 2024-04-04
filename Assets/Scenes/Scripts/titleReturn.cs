@@ -3,60 +3,30 @@ using TMPro;
 
 public class AddTextToTextMeshPro : MonoBehaviour
 {
-    private string text;
-    public TargetDetection targetDetection;
+    public GameObject classInformationTitle; // Reference to the GameObject with TextMeshProUGUI component
 
-
-    // Public property to access the text variable
-    public string Text
+    // Method to change the text of the TextMeshProUGUI component
+    public void ChangeText(string targetName)
     {
-        get { return text; }
-    }
-
-    void Start()
-    {
-        try
+        if (classInformationTitle == null)
         {
-            // Find and store a reference to the GameObject with the TargetDetection script
-            targetDetection = FindObjectOfType<TargetDetection>();
-
-            if (targetDetection != null)
-            {
-                // Access the TargetName property using the getter method
-                string targetName = targetDetection.TargetName;
-                Debug.Log("Target name from scraper.cs: " + targetName);
-            }
-            else
-            {
-                Debug.LogWarning("TargetDetection script not found in the scene.");
-            }
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError("Error: " + e.Message);
-        }
-        AddTextToTextMeshProP(text);
-    }
-
-    void AddTextToTextMeshProP(string textToAdd)
-    {
-        // Get all components attached to the same GameObject
-        Component[] components = GetComponents<Component>();
-
-        // Loop through all components to find TextMeshProUGUI
-        foreach (Component component in components)
-        {
-            // Check if the component is a TextMeshProUGUI component
-            if (component.GetType() == typeof(TextMeshProUGUI))
-            {
-                // If found, cast it to TextMeshProUGUI and append textToAdd
-                TextMeshProUGUI textMeshPro = (TextMeshProUGUI)component;
-                textMeshPro.text += textToAdd;
-                return; // Exit the loop after finding TextMeshProUGUI
-            }
+            Debug.LogWarning("GameObject with TextMeshProUGUI component not assigned.");
+            return;
         }
 
-        // If TextMeshProUGUI component is not found, log a warning
-        Debug.LogWarning("TextMeshProUGUI component not found on the GameObject.");
+        // Get TextMeshProUGUI component attached to classInformationTitle GameObject
+        TextMeshProUGUI textMeshPro = classInformationTitle.GetComponent<TextMeshProUGUI>();
+
+        // Check if TextMeshProUGUI component exists
+        if (textMeshPro != null)
+        {
+            // Change the text of the TextMeshProUGUI component
+            textMeshPro.text = "";
+            textMeshPro.text = targetName;
+        }
+        else
+        {
+            Debug.LogWarning("TextMeshProUGUI component not found on the GameObject.");
+        }
     }
 }

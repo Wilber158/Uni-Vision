@@ -9,7 +9,7 @@ namespace MyNamespace
     public class createBoxes : MonoBehaviour
     {
 
-        void Start()
+        public void boxCreation()
         {
             // Get the Canvas to be the parent of the boxes
             GameObject content = GameObject.Find("content");

@@ -1,18 +1,15 @@
 Class: CMPT 155
 Event Time: 8:00 am - 8:50 am, 9:00 am - 9:50 am
 
-Class: CMPT 101
-Event Time: 11:00 am - 12:15 pm
+Class: MATH 185
+Event Time: 11:00 am - 11:50 am
 
-Class: CMPT 102
-Event Time: 12:30 pm - 1:45 pm
+Class: MATH 186
+Event Time: 1:00 pm - 1:50 pm, 3:00 pm - 3:50 pm
 
-Class: CMPT 312
-Event Time: 2:00 pm - 3:15 pm
+Class: CS Tutoring
+Event Time: 2:00 pm - 3:00 pm
 
 Class: MATH 151
 Event Time: 5:30 pm - 6:20 pm
-
-Class: MATH 230
-Event Time: 6:30 pm - 7:45 pm
 

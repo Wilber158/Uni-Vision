@@ -11,25 +11,17 @@ using System.Threading;
 public class SeleniumExample : MonoBehaviour
 {
     private AddTextToTextMeshPro addTextToTextMeshPro;
-
-
-
-    void Start()
+    public void TriggerScraping(string targetName)
     {
-        // Find and initialize AddTextToTextMeshPro component
-        GameObject textMeshProObject = FindObjectOfType<AddTextToTextMeshPro>().gameObject;
-        addTextToTextMeshPro = textMeshProObject.GetComponent<AddTextToTextMeshPro>();
-        string textValue = addTextToTextMeshPro.Text;
-
-        // Call the method to scrape the data
-        Dictionary<string, List<string>> eventData = ScrapeEventData(textValue);
-
-        // Get dictionary count for box generation
-
+        // Call the ScrapeEventData method with the detected target name
+        Dictionary<string, List<string>> eventData = ScrapeEventData(targetName);
         // Write the extracted event data to a text file
         string fileName = "schedule.txt";
         string filePath = Path.Combine(Application.dataPath, "Resources", fileName);
         WriteEventDataToFile(eventData, filePath);
+    }
+    private void Start()
+    {
     }
 
     Dictionary<string, List<string>> ScrapeEventData(string textValue)

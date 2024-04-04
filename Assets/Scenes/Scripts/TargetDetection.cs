@@ -1,14 +1,21 @@
+using MyNamespace;
 using UnityEngine;
 
 public class TargetLookChecker : MonoBehaviour
 {
     public Transform userCamera; // Assign your AR camera
     public Transform[] targets; // Assign your target transforms
-    public float maxAngle = 10f; // Max angle to be considered "looking at"
-    public float maxDistance = 5f; // Max distance to be considered "within range"
+    public float maxAngle = 90f; // Max angle to be considered "looking at" (changed to 90 degrees)
+    public float maxDistance = 0.6f; // Max distance to be considered "within range" (adjust as needed)
 
+    // Reference to the SeleniumExample script
+    public SeleniumExample scrapper;
+    public CanvasCentering canvasCentering;
+    public AddTextToTextMeshPro titleModify;
+    public createBoxes bCreate;
     // Private backing field for the target name
     private string _targetName;
+    private string _lastTargetName; // Track the last target name
 
     // Property to access the target name
     public string TargetName
@@ -22,6 +29,8 @@ public class TargetLookChecker : MonoBehaviour
         // Reset target name
         TargetName = "";
 
+        bool targetChanged = false; // Flag to track if target has changed
+
         foreach (var target in targets)
         {
             string targetName = CheckTarget(userCamera, target);
@@ -29,18 +38,38 @@ public class TargetLookChecker : MonoBehaviour
             {
                 // Set the target name
                 TargetName = targetName;
-                // Log the target name for demonstration
-                Debug.Log("Target Name: " + TargetName);
-                // Pass the target name to the Scraper script
-                // Note: Uncomment and replace `scraperScript` with your actual reference to the Scraper script
-                //if (scraperScript != null)
-                //{
-                //    scraperScript.SaveTargetName(TargetName);
-                //}
-                //else
-                //{
-                //    Debug.LogWarning("Scraper script reference is null. Make sure it is assigned.");
-                //}
+
+                // If target name has changed since last check, log it
+                if (TargetName != _lastTargetName)
+                {
+                    _lastTargetName = TargetName;
+                    targetChanged = true;
+                }
+            }
+        }
+
+        // If target hasn't changed since last check, don't spam messages
+        if (targetChanged)
+        {
+            Debug.Log("Target Name: " + TargetName);
+            // If SeleniumExample script reference is not null, trigger it with the target name
+            if (scrapper != null)
+            {
+                titleModify.ChangeText(TargetName);
+                scrapper.TriggerScraping(TargetName);
+                bCreate.boxCreation();
+            }
+            else
+            {
+               Debug.LogWarning("SeleniumExample script reference is null. Make sure it is assigned.");
+            }
+            if (canvasCentering != null)
+            {
+                canvasCentering.CenterCanvas();
+            }
+            else
+            {
+                Debug.Log("Canvas centering script reference is null. Make sure it is assigned.");
             }
         }
     }
@@ -51,14 +80,12 @@ public class TargetLookChecker : MonoBehaviour
         float angle = Vector3.Angle(userCamera.forward, directionToTarget);
         float distance = directionToTarget.magnitude;
 
-        // Determine if the target is within range (uncomment if needed)
-        //if (angle <= maxAngle && distance <= maxDistance)
-        //{
-        // Return the target name when the conditions are met
-        return target.name;
-        //}
+        // Determine if the target is within range and angle is less than or equal to maxAngle
+        if (angle <= maxAngle && distance <= maxDistance)
+        {
+            return target.name;
+        }
 
-        // Return null if the conditions are not met
-        //return null;
+        return null;
     }
 }
