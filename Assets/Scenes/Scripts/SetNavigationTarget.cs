@@ -1,14 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.AI;
 public class SetNavigationTarget : MonoBehaviour {
 
     [SerializeField]
-    private Camera topDownCamera;
-    [SerializeField]
-    private GameObject navTargetObject;
+    private TMP_Dropdown navigationTargetDropdown;
 
+    [SerializeField]
+    private List<Target> navigationTargetObjects = new List<Target>();
     private UnityEngine.AI.NavMeshPath path;
     private LineRenderer line;
+    private Vector3 targetPosition = Vector3.zero;
 
     private bool lineToggle = false;
 
@@ -21,19 +25,14 @@ public class SetNavigationTarget : MonoBehaviour {
 // Update is called once per frame
 private void Update ()
 {
-    Debug.Log("Name of current object is: " + transform.name);
-    Debug.Log("Name of the target object is: " + navTargetObject.name);
     if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
     {
         lineToggle = !lineToggle;
     }
 
-    if (lineToggle)
+    if (lineToggle && targetPosition != Vector3.zero) 
     {
-        Vector3 spherePosition = transform.GetChild(0).position;
-        Debug.Log("Position of the sphere is: " + spherePosition);
-        Debug.Log("Position of the \"player\" is: " + transform.position);
-        UnityEngine.AI.NavMesh.CalculatePath(spherePosition, navTargetObject.transform.position, UnityEngine.AI.NavMesh.AllAreas, path);
+        UnityEngine.AI.NavMesh.CalculatePath(transform.position, targetPosition, UnityEngine.AI.NavMesh.AllAreas, path);
         line.positionCount = path.corners.Length;
         line.SetPositions(path.corners);
         line.enabled = true;
@@ -43,4 +42,14 @@ private void Update ()
         line.enabled = false;
     }
 }
+
+public void SetCurrentNavigationTarget(int selectedValue){
+    targetPosition = Vector3.zero;
+    string targetName = navigationTargetDropdown.options[selectedValue].text;
+    Target currentTarget = navigationTargetObjects.Find(x => x.Name.Equals(targetName));
+    if(currentTarget != null){
+        targetPosition = currentTarget.PositionObject.transform.position;
+    }
 }
+}
+
