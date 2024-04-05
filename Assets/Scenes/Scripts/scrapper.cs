@@ -7,6 +7,7 @@ using System.IO;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Threading;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class SeleniumExample : MonoBehaviour
 {
@@ -148,3 +149,4 @@ public class SeleniumExample : MonoBehaviour
         }
     }
 }
+

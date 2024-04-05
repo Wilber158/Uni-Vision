@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-public class SetNavigationTarget : MonoBehaviour {
+public class SetNavigationTarget : MonoBehaviour
+{
 
     [SerializeField]
     private Camera topDownCamera;
@@ -12,15 +13,15 @@ public class SetNavigationTarget : MonoBehaviour {
 
     private bool lineToggle = false;
 
-   private void Start ()
-{
-    path = new UnityEngine.AI.NavMeshPath();
-    line = transform.GetComponent<LineRenderer>();
-}
+    private void Start()
+    {
+        path = new UnityEngine.AI.NavMeshPath();
+        line = transform.GetComponent<LineRenderer>();
+    }
 
-// Update is called once per frame
-private void Update ()
-{
+    // Update is called once per frame
+    private void Update()
+    {/*
     Debug.Log("Name of current object is: " + transform.name);
     Debug.Log("Name of the target object is: " + navTargetObject.name);
     if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
@@ -41,6 +42,6 @@ private void Update ()
     else
     {
         line.enabled = false;
-    }
+    }*/
 }
 }

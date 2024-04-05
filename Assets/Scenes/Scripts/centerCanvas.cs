@@ -26,7 +26,6 @@ public class CanvasCentering : MonoBehaviour
 
         // Reset the rotation around the z-axis to ensure it's not flipped
         Vector3 eulerRotation = classInformationCanvas.transform.rotation.eulerAngles;
-        eulerRotation.z = 180f;
         classInformationCanvas.transform.rotation = Quaternion.Euler(eulerRotation);
     }
 }
