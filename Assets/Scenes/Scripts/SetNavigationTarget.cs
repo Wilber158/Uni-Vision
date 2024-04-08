@@ -32,6 +32,7 @@ private void Update ()
 
     if (lineToggle && targetPosition != Vector3.zero) 
     {
+        Debug.Log("Drawing line to target");
         UnityEngine.AI.NavMesh.CalculatePath(transform.position, targetPosition, UnityEngine.AI.NavMesh.AllAreas, path);
         line.positionCount = path.corners.Length;
         line.SetPositions(path.corners);
@@ -39,6 +40,7 @@ private void Update ()
     }
     else
     {
+        Debug.Log("Clearing line or no target set");
         line.enabled = false;
     }
 }
@@ -47,8 +49,10 @@ public void SetCurrentNavigationTarget(int selectedValue){
     targetPosition = Vector3.zero;
     string targetName = navigationTargetDropdown.options[selectedValue].text;
     Target currentTarget = navigationTargetObjects.Find(x => x.Name.Equals(targetName));
+    Debug.Log("Current target set to: " + targetName);
     if(currentTarget != null){
         targetPosition = currentTarget.PositionObject.transform.position;
+        Debug.Log("Target position set to: " + targetPosition);
     }
 }
 }
