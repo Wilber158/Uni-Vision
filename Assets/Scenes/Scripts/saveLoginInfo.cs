@@ -79,7 +79,7 @@ public class saveLoginInfo : MonoBehaviour
     {
         //decrypt and log the UserId for debugging purposes.
         //string testing1 = DecryptString(PlayerPrefs.GetString("UserId"));
-        ..Debug.Log($"UserId: {testing1}");
+        //Debug.Log($"UserId: {testing1}");
         // Check if both UserId and Password have been saved and are not empty
         return !string.IsNullOrEmpty(PlayerPrefs.GetString("UserId")) && !string.IsNullOrEmpty(PlayerPrefs.GetString("Password"));
         
