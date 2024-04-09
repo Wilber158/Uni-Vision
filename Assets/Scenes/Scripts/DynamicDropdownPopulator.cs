@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using TMPro; // Make sure to have the TextMesh Pro package
 using System.Collections.Generic;
 
 public class DynamicDropdownPopulator : MonoBehaviour
@@ -10,6 +9,9 @@ public class DynamicDropdownPopulator : MonoBehaviour
     [SerializeField]
     private GameObject targetParent; // GameObject with targets as children
 
+    // Public static list to be accessed by the navigation script
+    public static List<Target> navigationTargetObjects = new List<Target>();
+
     void Start()
     {
         PopulateDropdown();
@@ -17,22 +19,18 @@ public class DynamicDropdownPopulator : MonoBehaviour
 
     void PopulateDropdown()
     {
-        // Ensure the dropdown is not null
-        if (dropdown == null) return;
+        if (dropdown == null || targetParent == null) return;
 
-        // Clear existing options
         dropdown.ClearOptions();
+        navigationTargetObjects.Clear(); // Clear the existing list
 
-        // Find all children of the targetParent GameObject
         List<string> options = new List<string>();
-
-        // Add each child's name to the options list
         foreach (Transform child in targetParent.transform)
         {
             options.Add(child.name);
+            navigationTargetObjects.Add(new Target(child.name, child)); // Add to static list
         }
 
-        // Add the options to the dropdown
         dropdown.AddOptions(options);
     }
 }
