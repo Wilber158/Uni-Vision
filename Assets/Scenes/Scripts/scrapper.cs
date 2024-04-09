@@ -12,6 +12,10 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 public class SeleniumExample : MonoBehaviour
 {
     private AddTextToTextMeshPro addTextToTextMeshPro;
+
+    public static Boolean loginStatus {  get; private set; }
+
+
     public void TriggerScraping(string targetName)
     {
         // Call the ScrapeEventData method with the detected target name
@@ -49,10 +53,28 @@ public class SeleniumExample : MonoBehaviour
             IWebElement usernameElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("username")));
             IWebElement passwordElement = driver.FindElement(By.Id("password"));
 
+            string userId = saveLoginInfo.UserId;
+            string password = saveLoginInfo.Password;
+
             // Enter username and password
-            usernameElement.SendKeys("kdorji01");
-            passwordElement.SendKeys("KaldenDorji12!");
+            usernameElement.SendKeys(userId);
+            passwordElement.SendKeys(password);
             passwordElement.SendKeys(Keys.Return);
+
+            Thread.Sleep(3000);
+            IWebElement errorMessage = driver.FindElement(By.CssSelector("#error-msg"));
+            if (errorMessage != null)
+            {
+                status = false;
+                Debug.Log(loginStatus);
+                return null;
+            }
+            else
+            {
+                Debug.Log(loginStatus);
+                status = true;
+            }
+
 
             // Wait for the trust button to appear and click it
             IWebElement trustButton = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("trust-browser-button")));
