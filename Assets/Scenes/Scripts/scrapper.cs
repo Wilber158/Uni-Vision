@@ -13,7 +13,7 @@ public class SeleniumExample : MonoBehaviour
 {
     private AddTextToTextMeshPro addTextToTextMeshPro;
 
-    public static Boolean loginStatus {  get; private set; }
+    public static bool loginStatus {  get; private set; }
 
 
     public void TriggerScraping(string targetName)
