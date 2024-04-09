@@ -1,12 +1,14 @@
-using System;
 using UnityEngine;
 
+
+[System.Serializable]
 public class Target
 {
-    public string Name { get; set; }
-    public GameObject PositionObject { get; set; }
+    public string Name;
+    public Transform PositionObject; // Use Transform to hold the reference
 
-    public Target(string name, GameObject positionObject)
+    // Constructor for easy creation
+    public Target(string name, Transform positionObject)
     {
         Name = name;
         PositionObject = positionObject;
