@@ -65,14 +65,14 @@ public class SeleniumExample : MonoBehaviour
             IWebElement errorMessage = driver.FindElement(By.CssSelector("#error-msg"));
             if (errorMessage != null)
             {
-                status = false;
+                loginStatus = false;
                 Debug.Log(loginStatus);
                 return null;
             }
             else
             {
                 Debug.Log(loginStatus);
-                status = true;
+                loginStatus = true;
             }
 
 
