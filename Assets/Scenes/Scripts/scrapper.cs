@@ -77,9 +77,12 @@ public class SeleniumExample : MonoBehaviour
 
 
             // Wait for the trust button to appear and click it
-            IWebElement trustButton = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("trust-browser-button")));
-            trustButton.Click();
-
+            Thread.Sleep(3000);
+            if (driver.FindElements(By.Id("trust-browser-button")).Count > 0)
+            {
+                IWebElement trustButton = driver.FindElement(By.Id("trust-browser-button"));
+                trustButton.Click();
+            }
             // Navigate to the calendar page
             wait.Until(ExpectedConditions.UrlContains("https://25live.collegenet.com/pro/manhattan#!/home/search"));
             driver.Navigate().GoToUrl("https://25live.collegenet.com/pro/manhattan#!/home/search/location/calendar");
