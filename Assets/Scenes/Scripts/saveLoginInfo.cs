@@ -84,5 +84,13 @@ public class saveLoginInfo : MonoBehaviour
         return !string.IsNullOrEmpty(PlayerPrefs.GetString("UserId")) && !string.IsNullOrEmpty(PlayerPrefs.GetString("Password"));
         
     }
+
+    public static void ResetCredentials()
+    {
+        PlayerPrefs.DeleteKey("UserId");
+        PlayerPrefs.DeleteKey("Password");
+        PlayerPrefs.Save();
+    }
+
 }
 

@@ -4,6 +4,8 @@ using TMPro;
 
 public class UserInfoManager : MonoBehaviour
 {
+    public TMP_InputField studentID;
+    public TMP_InputField studentName;
     public TMP_InputField class1;
     public TMP_InputField class2;
     public TMP_InputField class3;
@@ -24,6 +26,8 @@ public class UserInfoManager : MonoBehaviour
     // Load user info from PlayerPrefs
     void LoadUserInfo()
     {
+        studentID.text = PlayerPrefs.GetString("StudentId", "");
+        studentName.text = PlayerPrefs.GetString("StudentName", "");
         class1.text = PlayerPrefs.GetString("Class1", "");
         class2.text = PlayerPrefs.GetString("Class2", "");
         class3.text = PlayerPrefs.GetString("Class3", "");
@@ -35,6 +39,8 @@ public class UserInfoManager : MonoBehaviour
     // Save user info to PlayerPrefs
     void SaveUserInfo()
     {
+        PlayerPrefs.SetString("StudentId", studentID.text);
+        PlayerPrefs.SetString("StudentName", studentName.text);
         PlayerPrefs.SetString("Class1", class1.text);
         PlayerPrefs.SetString("Class2", class2.text);
         PlayerPrefs.SetString("Class3", class3.text);
