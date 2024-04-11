@@ -2021,7 +2021,7 @@ GameObject:
   - component: {fileID: 1172312937}
   - component: {fileID: 1172312936}
   m_Layer: 8
-  m_Name: RLC108 (1)
+  m_Name: RLC210
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2036,7 +2036,7 @@ Transform:
   m_GameObject: {fileID: 1172312934}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.67, y: -1.0900004, z: 14.48}
+  m_LocalPosition: {x: 37.67, y: -0.818, z: 14.48}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
