@@ -7,7 +7,7 @@ using System.IO;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Threading;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
+using System.Linq.Expressions;
 
 public class SeleniumExample : MonoBehaviour
 {
@@ -15,6 +15,48 @@ public class SeleniumExample : MonoBehaviour
 
     public static bool loginStatus {  get; private set; }
 
+    public void loginChecker(string uname, string passwrd)
+    {
+        string chromeDriverPath = @"C:\Users\Kalden\Documents\GitHub\Uni-Vision\Assets\Packages\Selenium.WebDriver.ChromeDriver.122.0.6261.11100\driver\win32";
+
+        // Set up Chrome WebDriver with the specified path
+        ChromeOptions options = new ChromeOptions();
+        //options.AddArgument("--headless"); // Optional: Run Chrome in headless mode
+
+        // Initialize WebDriver outside using block for later disposal
+        IWebDriver driver = new ChromeDriver(chromeDriverPath, options);
+
+        driver.Navigate().GoToUrl("https://25live.collegenet.com/manhattan");
+
+        // Find username and password elements
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+        IWebElement usernameElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("username")));
+        IWebElement passwordElement = driver.FindElement(By.Id("password"));
+
+        string userId = uname;
+        string password = passwrd;
+
+        // Enter username and password
+        usernameElement.SendKeys(userId);
+        passwordElement.SendKeys(password);
+        passwordElement.SendKeys(Keys.Return);
+
+        Thread.Sleep(3000);
+        try
+        {
+            IWebElement errorMessage = driver.FindElement(By.CssSelector("#error-msg"));
+            if (errorMessage != null)
+            {
+                loginStatus = false;
+                Debug.Log(loginStatus);
+            }
+        }
+        catch
+        {
+            loginStatus = true;
+        }
+        driver.Quit();
+        }
 
     public void TriggerScraping(string targetName)
     {
@@ -63,18 +105,6 @@ public class SeleniumExample : MonoBehaviour
 
             Thread.Sleep(3000);
             IWebElement errorMessage = driver.FindElement(By.CssSelector("#error-msg"));
-            if (errorMessage != null)
-            {
-                loginStatus = false;
-                Debug.Log(loginStatus);
-                return null;
-            }
-            else
-            {
-                Debug.Log(loginStatus);
-                loginStatus = true;
-            }
-
 
             // Wait for the trust button to appear and click it
             Thread.Sleep(3000);

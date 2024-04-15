@@ -25,6 +25,8 @@ public class userLogin : MonoBehaviour
         string password = passwordInputField.text;
 
         // Get the login status using a local variable for confirmation
+        SeleniumExample myScraperInstance = new SeleniumExample();
+        myScraperInstance.loginChecker(userId,password);
         bool confirmation = SeleniumExample.loginStatus; // Use the correct class name here
 
         // Check the confirmation status before saving
