@@ -6,44 +6,40 @@ using UnityEngine.XR.ARSubsystems;
 using ZXing;
 using Unity.Collections;
 using Unity.XR.CoreUtils;
+using UnityEngine.UI;
 
 public class QrCodeRecenter : MonoBehaviour
 {
     [SerializeField]
     private ARSession session;
-
     [SerializeField]
     private XROrigin sessionOrigin;
-
     [SerializeField]
     private ARCameraManager cameraManager;
-
     [SerializeField]
     private GameObject targetParent; // GameObject whose children are target objects.
+    [SerializeField]
+    private Slider floorSlider; // Slider component for selecting floors.
 
     private List<Target> navigationTargetObjects = new List<Target>();
-
     private Texture2D cameraImageTexture;
     private IBarcodeReader reader = new BarcodeReader();
+    private float scanInterval = 2.0f; // Time in seconds between scans
+    private float lastScanTime = 0;
 
     private void Awake()
     {
-        // Populate navigationTargetObjects from children of targetParent
+        cameraImageTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
         foreach (Transform child in targetParent.transform)
         {
-            // Since the Target class is now fully defined, create a new Target object
-            Target target = new Target(child.name, child);  // Create a new Target instance
+            Target target = new Target(child.name, child);
             navigationTargetObjects.Add(target);
         }
     }
 
-
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetQrCodeRecenterTarget("MainEntrance_1");
-        }
+        floorSlider.onValueChanged.AddListener(delegate { GetSliderValue(); });
     }
 
     private void OnEnable()
@@ -60,6 +56,10 @@ public class QrCodeRecenter : MonoBehaviour
 
     private void OnCameraFrameReceived(ARCameraFrameEventArgs eventArgs)
     {
+        if (Time.time - lastScanTime < scanInterval)
+            return;
+
+        lastScanTime = Time.time;
         Debug.Log("Scanning for QR Codes...");
         if (!cameraManager.TryAcquireLatestCpuImage(out XRCpuImage image))
         {
@@ -80,12 +80,10 @@ public class QrCodeRecenter : MonoBehaviour
         image.Convert(conversionParams, buffer);
         image.Dispose();
 
-        cameraImageTexture = new Texture2D(
-            conversionParams.outputDimensions.x,
-            conversionParams.outputDimensions.y,
-            conversionParams.outputFormat,
-            false);
-
+        if (cameraImageTexture.width != conversionParams.outputDimensions.x || cameraImageTexture.height != conversionParams.outputDimensions.y)
+        {
+            cameraImageTexture.Reinitialize(conversionParams.outputDimensions.x, conversionParams.outputDimensions.y);
+        }
         cameraImageTexture.LoadRawTextureData(buffer);
         cameraImageTexture.Apply();
         buffer.Dispose();
@@ -112,6 +110,12 @@ public class QrCodeRecenter : MonoBehaviour
         {
             Debug.LogWarning("Target for the QR Code not found.");
         }
+    }
+
+    private void GetSliderValue()
+    {
+        int floorIndex = Mathf.RoundToInt(floorSlider.value);
+        ChangeActiveFloor($"MainEntrance_{floorIndex}");
     }
 
     public void ChangeActiveFloor(string floorEntrance)
