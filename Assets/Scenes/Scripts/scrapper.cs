@@ -103,11 +103,8 @@ public class SeleniumExample : MonoBehaviour
             passwordElement.SendKeys(password);
             passwordElement.SendKeys(Keys.Return);
 
-            Thread.Sleep(3000);
-            IWebElement errorMessage = driver.FindElement(By.CssSelector("#error-msg"));
-
             // Wait for the trust button to appear and click it
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             if (driver.FindElements(By.Id("trust-browser-button")).Count > 0)
             {
                 IWebElement trustButton = driver.FindElement(By.Id("trust-browser-button"));
