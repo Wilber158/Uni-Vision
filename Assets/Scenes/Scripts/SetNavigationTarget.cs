@@ -1,90 +1,120 @@
 using UnityEngine;
 using UnityEngine.AI; // For navigation
 using TMPro; // For TMP_Dropdown
+using System.Linq;
 
 public class SetNavigationTarget : MonoBehaviour
 {
     [SerializeField]
     private TMP_Dropdown navigationTargetDropdown;
+    [SerializeField]
+    private FloorManager floorManager;
+
     private NavMeshPath path;
     private LineRenderer line;
     private Vector3 targetPosition = Vector3.zero;
     private bool lineToggle = false;
     private Transform userIndicatorTransform;
 
-
-    private void Start()
-    {
+ private void Start() {
         path = new NavMeshPath();
         line = GetComponent<LineRenderer>();
-
-        if (transform.childCount > 0)
-        {
-            userIndicatorTransform = transform.GetChild(0);
-        }
-        else
-        {
-            Debug.LogError("User indicator child not found, using parent transform instead.");
-            userIndicatorTransform = transform; // Fallback to using the parent's transform
-        }
-        
+        userIndicatorTransform = transform.childCount > 0 ? transform.GetChild(0) : transform;
         navigationTargetDropdown.onValueChanged.AddListener(SetCurrentNavigationTarget);
     }
 
-    private void Update()
-    {
-        // Toggle line drawing on touch
+    private void Update() {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
             lineToggle = !lineToggle;
-        }
 
-        // Continuously update the line if it's enabled
         if (lineToggle)
-        {
             UpdateNavigationLine();
-        }
         else
-        {
             line.enabled = false;
-        }
     }
 
-    private void UpdateNavigationLine()
-    {
-        if (targetPosition != Vector3.zero) // Ensure there's a valid target position
-        {
-            Debug.Log("Current user position: " + transform.position + " Target position: " + targetPosition);
-            // Calculate path from current position to target position
-            if (NavMesh.CalculatePath(userIndicatorTransform.position, targetPosition, NavMesh.AllAreas, path))
-            {
-                if (path.status == NavMeshPathStatus.PathComplete)
-                {
-                    // Path is complete, update the line renderer
-                    line.positionCount = path.corners.Length;
-                    line.SetPositions(path.corners);
-                    line.enabled = true;
-                }
-                else
-                {
-                    // Handle incomplete or invalid path
-                    line.enabled = false;
-                }
+    private void UpdateNavigationLine() {
+        if (targetPosition != Vector3.zero && NavMesh.CalculatePath(userIndicatorTransform.position, targetPosition, NavMesh.AllAreas, path)) {
+            if (path.status == NavMeshPathStatus.PathComplete) {
+                line.positionCount = path.corners.Length;
+                line.SetPositions(path.corners);
+                line.enabled = true;
+            } else {
+                line.enabled = false;
             }
         }
     }
 
-    public void SetCurrentNavigationTarget(int selectedValue)
+public void SetCurrentNavigationTarget(int selectedValue)
+{
+    Debug.Log("SetCurrentNavigationTarget called with value: " + selectedValue);
+
+    if (DynamicDropdownPopulator.Instance == null)
     {
-        if (selectedValue < 0 || selectedValue >= DynamicDropdownPopulator.navigationTargetObjects.Count) return;
+        Debug.LogError("DynamicDropdownPopulator.Instance is null");
+        return;
+    }
 
-        // Update target position based on dropdown selection
-        var target = DynamicDropdownPopulator.navigationTargetObjects[selectedValue];
+    if (selectedValue < 0 || selectedValue >= DynamicDropdownPopulator.Instance.navigationTargetObjects.Count)
+    {
+        Debug.LogError("Selected value is out of range: " + selectedValue);
+        return;
+    }
+
+    var target = DynamicDropdownPopulator.Instance.navigationTargetObjects[selectedValue];
+    Debug.Log("Selected target: " + target.Name);
+
+    if (floorManager == null)
+    {
+        Debug.LogError("FloorManager is not assigned in the inspector");
+        return;
+    }
+
+    Debug.Log("Current floor: " + floorManager.currentFloor + ", Target floor: " + target.FloorNumber);
+
+    if (floorManager.currentFloor != target.FloorNumber)
+    {
+        Debug.Log("Target is on a different floor. Finding nearest stairwell...");
+        var nearestStairwell = FindNearestStairwell(floorManager.currentFloor);
+
+        if (nearestStairwell == null)
+        {
+            Debug.LogError("No nearest stairwell found");
+            return;
+        }
+
+        Debug.Log("Nearest stairwell found: " + nearestStairwell.Name + " at position " + nearestStairwell.PositionObject.position);
+        targetPosition = nearestStairwell.PositionObject.position;
+    }
+    else
+    {
+        Debug.Log("Target is on the same floor.");
         targetPosition = target.PositionObject.position;
+    }
 
-        // Optionally, force line update when new target is selected
-        if (lineToggle) UpdateNavigationLine();
-
-        Debug.Log($"Drop Down selected Target position set to: {targetPosition}");
+    if (lineToggle)
+    {
+        Debug.Log("Updating navigation line.");
+        UpdateNavigationLine();
     }
 }
+
+private Target FindNearestStairwell(int currentFloor)
+{
+    Debug.Log("Finding nearest stairwell on floor: " + currentFloor);
+
+    var stairwells = DynamicDropdownPopulator.Instance.navigationTargetObjects
+        .Where(t => t.IsStair && t.FloorNumber == currentFloor)
+        .ToList();
+
+    if (!stairwells.Any())
+    {
+        Debug.LogError("No stairwells found on floor: " + currentFloor);
+        return null;
+    }
+
+    var nearestStairwell = stairwells.OrderBy(t => Vector3.Distance(userIndicatorTransform.position, t.PositionObject.position)).FirstOrDefault();
+    Debug.Log("Nearest stairwell is " + nearestStairwell.Name);
+    return nearestStairwell;
+}
+} 

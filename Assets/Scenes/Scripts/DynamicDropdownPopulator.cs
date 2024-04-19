@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Make sure to have the TextMesh Pro package
+using TMPro;
 using System.Collections.Generic;
 
 public class DynamicDropdownPopulator : MonoBehaviour
@@ -9,8 +9,23 @@ public class DynamicDropdownPopulator : MonoBehaviour
     [SerializeField]
     private GameObject targetParent; // GameObject with targets as children
 
-    // Public static list to be accessed by the navigation script
-    public static List<Target> navigationTargetObjects = new List<Target>();
+    // Public list to be accessed by the navigation script
+    public List<Target> navigationTargetObjects = new List<Target>();
+
+    // Singleton pattern for accessing instance from other scripts
+    public static DynamicDropdownPopulator Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -28,9 +43,17 @@ public class DynamicDropdownPopulator : MonoBehaviour
         foreach (Transform child in targetParent.transform)
         {
             options.Add(child.name);
-            navigationTargetObjects.Add(new Target(child.name, child)); // Add to static list
+            // Create new Target instance with more detailed initialization as needed
+            Target newTarget = new Target(child.name, child); // Initialize additional properties as needed
+            navigationTargetObjects.Add(newTarget); // Add to list
         }
 
         dropdown.AddOptions(options);
+    }
+
+    // Method to access navigation target objects
+    public List<Target> GetNavigationTargets()
+    {
+        return navigationTargetObjects;
     }
 }
