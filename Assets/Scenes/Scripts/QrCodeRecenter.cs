@@ -54,6 +54,16 @@ public class QrCodeRecenter : MonoBehaviour
         Debug.Log("QR Code scanning disabled.");
     }
 
+     private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SetQrCodeRecenterTarget("End_3");
+        }
+    }
+
+    
+
     private void OnCameraFrameReceived(ARCameraFrameEventArgs eventArgs)
     {
         if (Time.time - lastScanTime < scanInterval)
