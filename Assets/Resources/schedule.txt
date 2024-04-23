@@ -1,0 +1,6 @@
+Class: MATH 286
+Event Time: 9:00 am - 9:50 am, 1:00 pm - 1:50 pm
+
+Class: ENGS 116
+Event Time: 11:00 am - 12:15 pm
+

@@ -12,6 +12,7 @@ namespace MyNamespace
         {
             // Get the Canvas to be the parent of the boxes
             GameObject content = GameObject.Find("content");
+            DestroyExistingBoxes(content);
 
             // Load the default font asset for TextMeshPro
             TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/ARIAL SDF");
@@ -27,6 +28,9 @@ namespace MyNamespace
             // Loop to create the specified number of boxes
             for (int i = 0; i < scheduleLines.Length - 1; i += 2)
             {
+                string className = scheduleLines[i];
+                string classTime = scheduleLines[i + 1];
+
                 // Create a new GameObject for the box
                 GameObject box = new GameObject("Box" + i);
 
@@ -53,7 +57,7 @@ namespace MyNamespace
                 TextMeshProUGUI textMeshPro = textObject.AddComponent<TextMeshProUGUI>();
 
                 // Set the text content to the class and time from the schedule file
-                textMeshPro.text = scheduleLines[i] + "\n" + scheduleLines[i + 1];
+                textMeshPro.text = className + "\n" + classTime;
 
                 // Set the font asset
                 textMeshPro.font = fontAsset;
@@ -71,6 +75,28 @@ namespace MyNamespace
                 RectTransform textRectTransform = textObject.GetComponent<RectTransform>();
                 textRectTransform.sizeDelta = new Vector2(2213, 657); // Change the size as needed
             }
+
         }
+        public void DestroyExistingBoxes(GameObject parent)
+        {
+            // Find all children of the parent
+            while (parent.transform.childCount > 0)
+            {
+                // Get the first child
+                Transform child = parent.transform.GetChild(0);
+
+                // Destroy the child GameObject
+                try
+                {
+                    DestroyImmediate(child.gameObject);
+                }
+                catch
+                {
+                    Debug.Log("error");
+                }
+            }
+        }
+
+
     }
 }

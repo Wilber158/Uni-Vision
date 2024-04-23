@@ -1,187 +1,84 @@
 using UnityEngine;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using System.IO;
-using SeleniumExtras.WaitHelpers;
 using System;
-using System.Threading;
-using System.Linq.Expressions;
+using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class SeleniumExample : MonoBehaviour
 {
     private AddTextToTextMeshPro addTextToTextMeshPro;
 
-    public static bool loginStatus {  get; private set; }
 
-    public void loginChecker(string uname, string passwrd)
+    public void TriggerDatabaseData(string targetName)
     {
-        string chromeDriverPath = @"C:\Users\Kalden\Documents\GitHub\Uni-Vision\Assets\Packages\Selenium.WebDriver.ChromeDriver.122.0.6261.11100\driver\win32";
-
-        // Set up Chrome WebDriver with the specified path
-        ChromeOptions options = new ChromeOptions();
-        //options.AddArgument("--headless"); // Optional: Run Chrome in headless mode
-
-        // Initialize WebDriver outside using block for later disposal
-        IWebDriver driver = new ChromeDriver(chromeDriverPath, options);
-
-        driver.Navigate().GoToUrl("https://25live.collegenet.com/manhattan");
-
-        // Find username and password elements
-        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-        IWebElement usernameElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("username")));
-        IWebElement passwordElement = driver.FindElement(By.Id("password"));
-
-        string userId = uname;
-        string password = passwrd;
-
-        // Enter username and password
-        usernameElement.SendKeys(userId);
-        passwordElement.SendKeys(password);
-        passwordElement.SendKeys(Keys.Return);
-
-        Thread.Sleep(3000);
-        try
-        {
-            IWebElement errorMessage = driver.FindElement(By.CssSelector("#error-msg"));
-            if (errorMessage != null)
-            {
-                loginStatus = false;
-                Debug.Log(loginStatus);
-            }
-        }
-        catch
-        {
-            loginStatus = true;
-        }
-        driver.Quit();
-        }
-
-    public void TriggerScraping(string targetName)
-    {
-        // Call the ScrapeEventData method with the detected target name
-        Dictionary<string, List<string>> eventData = ScrapeEventData(targetName);
-        // Write the extracted event data to a text file
-        string fileName = "schedule.txt";
-        string filePath = Path.Combine(Application.dataPath, "Resources", fileName);
-        WriteEventDataToFile(eventData, filePath);
-    }
-    private void Start()
-    {
+        // Call a method to retrieve event data from the database
+        Dictionary<string, List<string>> eventData = RetrieveEventDataFromDatabase(targetName);
+        // Write the retrieved event data to a text file
+        WriteEventDataToFile(eventData);
     }
 
-    Dictionary<string, List<string>> ScrapeEventData(string textValue)
+    public Dictionary<string, List<string>> RetrieveEventDataFromDatabase(string targetName)
     {
         // Initialize dictionary to store event data
         Dictionary<string, List<string>> eventData = new Dictionary<string, List<string>>();
 
-        // Set the path to ChromeDriver executable
-        string chromeDriverPath = @"C:\Users\Kalden\Documents\GitHub\Uni-Vision\Assets\Packages\Selenium.WebDriver.ChromeDriver.122.0.6261.11100\driver\win32";
+        // Get the current day of the week
+        string currentDay = DateTime.Now.DayOfWeek.ToString();
 
-        // Set up Chrome WebDriver with the specified path
-        ChromeOptions options = new ChromeOptions();
-        //options.AddArgument("--headless"); // Optional: Run Chrome in headless mode
+        // Specify the full path to the SQLite database file
+        string databasePath = Path.Combine(Application.dataPath, "Resources", "db", targetName + ".db");
 
-        // Initialize WebDriver outside using block for later disposal
-        IWebDriver driver = new ChromeDriver(chromeDriverPath, options);
-        try
+        // Check if the file exists
+        if (File.Exists(databasePath))
         {
-            // Navigate to the website
-            driver.Navigate().GoToUrl("https://25live.collegenet.com/manhattan");
+            // Create the connection string
+            string connectionString = $"Data Source={databasePath};Version=3;";
 
-            // Find username and password elements
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            IWebElement usernameElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("username")));
-            IWebElement passwordElement = driver.FindElement(By.Id("password"));
-
-            string userId = saveLoginInfo.UserId;
-            string password = saveLoginInfo.Password;
-
-            // Enter username and password
-            usernameElement.SendKeys(userId);
-            passwordElement.SendKeys(password);
-            passwordElement.SendKeys(Keys.Return);
-
-            // Wait for the trust button to appear and click it
-            Thread.Sleep(10000);
-            if (driver.FindElements(By.Id("trust-browser-button")).Count > 0)
+            // Open the connection
+            using (Mono.Data.Sqlite.SqliteConnection connection = new Mono.Data.Sqlite.SqliteConnection(connectionString))
             {
-                IWebElement trustButton = driver.FindElement(By.Id("trust-browser-button"));
-                trustButton.Click();
-            }
-            // Navigate to the calendar page
-            wait.Until(ExpectedConditions.UrlContains("https://25live.collegenet.com/pro/manhattan#!/home/search"));
-            driver.Navigate().GoToUrl("https://25live.collegenet.com/pro/manhattan#!/home/search/location/calendar");
+                connection.Open();
 
-            // Enter the query in the search input field and press Enter
-            IWebElement searchInput = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("textarea.searchInput")));
-            searchInput.SendKeys(textValue);
-            searchInput.SendKeys(Keys.Return);
+                // Define your query to retrieve event data from a specific table (replace 'YourTableName' with the actual table name)
+                string query = $"SELECT * FROM {currentDay}";
 
-            // Wait for the event items to load
-            Thread.Sleep(5000);
-            var tdElements1 = wait.Until(driver => driver.FindElements(By.CssSelector("td.ngTD.CalendarCell.ngTD.ngZmid.ng-scope.CalendarCellToday.ngMonthclass1")));
-            var tdElements2 = wait.Until(driver => driver.FindElements(By.CssSelector("td.ngTD.CalendarCell.ngTD.ngZmid.ng-scope.CalendarCellToday.ngMonthclass2")));
-            var tdElements = new List<IWebElement>(tdElements1);
-            tdElements.AddRange(tdElements2);
-
-            // Ensure only one <td> element is found for today
-            if (tdElements.Count == 1)
-            {
-                var tdElement = tdElements[0];
-
-                // Find the event items within the current date element
-                var calendarDayEventItems = tdElement.FindElements(By.CssSelector("div.ngCalendarDayEventItem.CalendarDayEventItem.ng-scope"));
-
-                // Iterate through each event item
-                foreach (var item in calendarDayEventItems)
+                // Create a command to execute the query
+                using (Mono.Data.Sqlite.SqliteCommand command = new Mono.Data.Sqlite.SqliteCommand(query, connection))
                 {
-                    // Get the startDt, endDt, and s25-item-name elements
-                    var startDtElement = item.FindElement(By.CssSelector("span.startDt"));
-                    var endDtElement = item.FindElement(By.CssSelector("span.endDt"));
-                    var itemNameElement = item.FindElement(By.CssSelector("div.s25-item-name"));
-
-                    // Extract the text content of each element
-                    string startDt = startDtElement.Text;
-                    string endDt = endDtElement.Text;
-                    string itemName = itemNameElement.Text;
-
-                    // Format the dictionary key (item name stripped after the second space)
-                    string key = GetDictionaryKey(itemName);
-
-                    // Format the dictionary value (start time + hyphen + end time)
-                    string value = $"{startDt} - {endDt}";
-
-                    // Add the key-value pair to the dictionary
-                    if (!eventData.ContainsKey(key))
+                    // Execute the query and obtain a reader
+                    using (Mono.Data.Sqlite.SqliteDataReader reader = command.ExecuteReader())
                     {
-                        eventData[key] = new List<string>();
+                        // Check if the reader has any rows
+                        while (reader.Read())
+                        {
+                            // Assuming your table has a column named 'EventName'
+                            string eventName = reader["class"].ToString();
+
+                            // Assuming your table has a column named 'EventData'
+                            string eventDataValue1 = reader["start_date"].ToString();
+                            string eventDataValue2 = reader["end_date"].ToString();
+                            // Add the event data to the dictionary
+                            if (!eventData.ContainsKey(eventName))
+                            {
+                                eventData[eventName] = new List<string>();
+                            }
+                            eventData[eventName].Add(eventDataValue1 + " - " + eventDataValue2);
+                        }
                     }
-                    eventData[key].Add(value);
                 }
             }
         }
-        finally
+        else
         {
-            // Dispose of WebDriver resources
-            driver.Quit();
+            Console.WriteLine("Database file does not exist.");
         }
 
         return eventData;
     }
 
-    string GetDictionaryKey(string itemName)
+    void WriteEventDataToFile(Dictionary<string, List<string>> eventData)
     {
-        string[] parts = itemName.Split(' ');
-        if (parts.Length >= 2)
-            return $"{parts[0]} {parts[1]}";
-        else
-            return itemName;
-    }
-
-    void WriteEventDataToFile(Dictionary<string, List<string>> eventData, string filePath)
-    {
+        string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
         if (File.Exists(filePath))
         {
             // Delete the file if it exists
@@ -189,16 +86,15 @@ public class SeleniumExample : MonoBehaviour
             Debug.Log("Deleted existing file: " + filePath);
         }
         using (StreamWriter writer = new StreamWriter(filePath))
-        {
-            foreach (KeyValuePair<string, List<string>> kvp in eventData)
-            {
-                writer.WriteLine("Class: " + kvp.Key);
-                string eventTimes = string.Join(", ", kvp.Value);
-                writer.WriteLine("Event Time: " + eventTimes);
-                writer.WriteLine();
-            }
-            Debug.Log("Event data count: " + eventData.Count); // Output the count of event data
-        }
+        
+                foreach (KeyValuePair<string, List<string>> kvp in eventData)
+                {
+                    writer.WriteLine("Class: " + kvp.Key);
+                    string eventTimes = string.Join(", ", kvp.Value);
+                    writer.WriteLine("Event Time: " + eventTimes);
+                    writer.WriteLine();
+                }
+
     }
 }
 

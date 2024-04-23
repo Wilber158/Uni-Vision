@@ -1,4 +1,5 @@
 using MyNamespace;
+using System.IO;
 using UnityEngine;
 
 public class TargetLookChecker : MonoBehaviour
@@ -6,7 +7,7 @@ public class TargetLookChecker : MonoBehaviour
     public Transform userCamera; // Assign your AR camera
     public Transform[] targets; // Assign your target transforms
     public float maxAngle = 90f; // Max angle to be considered "looking at" (changed to 90 degrees)
-    public float maxDistance = 0.6f; // Max distance to be considered "within range" (adjust as needed)
+    public float maxDistance = 0.2f; // Max distance to be considered "within range" (adjust as needed)
 
     // Reference to the SeleniumExample script
     public SeleniumExample scrapper;
@@ -38,7 +39,6 @@ public class TargetLookChecker : MonoBehaviour
             {
                 // Set the target name
                 TargetName = targetName;
-
                 // If target name has changed since last check, log it
                 if (TargetName != _lastTargetName)
                 {
@@ -52,30 +52,33 @@ public class TargetLookChecker : MonoBehaviour
         if (targetChanged)
         {
             Debug.Log("Target Name: " + TargetName);
-            // If SeleniumExample script reference is not null, trigger it with the target name
-            if (scrapper != null)
             {
                 string targetNameWithSpace = TargetName.Insert(3, " ");
 
                 titleModify.ChangeText(targetNameWithSpace);
-                scrapper.TriggerScraping(targetNameWithSpace);
+                canvasCentering.ToggleCanvasVisibility();
+
+                try
+                {
+                    scrapper.TriggerDatabaseData(TargetName);
+
+                }
+                catch
+                {
+                    string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
+                    if (File.Exists(filePath))
+                    {
+                        // Delete the file if it exists
+                        File.Delete(filePath);
+                        Debug.Log("Doesn't work");
+                    }
+                    GameObject content = GameObject.Find("content");
+                    bCreate.DestroyExistingBoxes(content);
+                }
                 bCreate.boxCreation();
-            }
-            else
-            {
-                Debug.LogWarning("SeleniumExample script reference is null. Make sure it is assigned.");
-            }
-            if (canvasCentering != null)
-            {
-                canvasCentering.CenterCanvas();
-            }
-            else
-            {
-                Debug.Log("Canvas centering script reference is null. Make sure it is assigned.");
             }
         }
     }
-
     private string CheckTarget(Transform userCamera, Transform target)
     {
         Vector3 directionToTarget = target.position - userCamera.position;
