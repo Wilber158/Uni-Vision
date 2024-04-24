@@ -114,6 +114,7 @@ public class SetNavigationTarget : MonoBehaviour
 
     public void ResetUIAppearance()
     {
+        Debug.Log("Button Clicked!");
         allowUIAppear = false;
         destinationReachedGUI.SetActive(false);
     }

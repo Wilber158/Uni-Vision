@@ -3249,8 +3249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationTargetDropdown: {fileID: 677698833}
   floorManager: {fileID: 517829554}
-  destinationText: {fileID: 0}
-  destinationReachedGUI: {fileID: 0}
+  destinationText: {fileID: 1794392925}
+  destinationReachedGUI: {fileID: 1799507630}
 --- !u!1 &817091304
 GameObject:
   m_ObjectHideFlags: 0
@@ -6736,7 +6736,6 @@ GameObject:
   - component: {fileID: 1488583023}
   - component: {fileID: 1488583022}
   - component: {fileID: 1488583021}
-  - component: {fileID: 1488583024}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -6791,21 +6790,6 @@ Transform:
   - {fileID: 228900861}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1488583024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488583020}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 0}
-  m_MaxNumberOfMovingImages: 0
-  m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &1493093679
 GameObject:
   m_ObjectHideFlags: 0
@@ -8419,7 +8403,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7.040962, y: 11.075233, z: -13.464355, w: -12.132477}
+  m_margin: {x: 18.331879, y: 11.075233, z: -13.464355, w: 2.8119202}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8663,7 +8647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1799507631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8714,7 +8698,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799507630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
