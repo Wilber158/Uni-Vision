@@ -7,6 +7,7 @@ public class ToggleCanvasVisibility : MonoBehaviour
 
     public void ToggleVisibility()
     {
+        Debug.Log("ToggleVisibility Called");
         // Get the parent canvas component
         Canvas parentCanvas = GetComponentInParent<Canvas>();
 
