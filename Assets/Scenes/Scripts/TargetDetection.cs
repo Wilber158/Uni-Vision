@@ -1,96 +1,111 @@
 using MyNamespace;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI; // Required for Button and Color manipulation
 
 public class TargetLookChecker : MonoBehaviour
 {
+    [SerializeField] private GameObject Targets; // GameObject containing all targets as children
     public Transform userCamera; // Assign your AR camera
-    public Transform[] targets; // Assign your target transforms
-    public float maxAngle = 90f; // Max angle to be considered "looking at" (changed to 90 degrees)
-    public float maxDistance = 0.2f; // Max distance to be considered "within range" (adjust as needed)
+    public Transform[] targets; // Populated at runtime
+    public float maxAngle = 90f; // Max angle for "looking at"
+    public float maxDistance = 0.2f; // Max distance for "within range"
 
-    // Reference to the SeleniumExample script
+    // References to other components
     public SeleniumExample scrapper;
     public CanvasCentering canvasCentering;
     public AddTextToTextMeshPro titleModify;
     public createBoxes bCreate;
-    // Private backing field for the target name
-    private string _targetName;
+
+    // UI Button to change color
+    [SerializeField] private Button destinationButton; // Button to change color
+    public Color normalColor = Color.white; // Default color
+    public Color reachedColor = Color.green; // Color when target is reached
+
     private string _lastTargetName; // Track the last target name
 
-    // Property to access the target name
-    public string TargetName
+    private void Start()
     {
-        get { return _targetName; }
-        private set { _targetName = value; }
+        if (Targets != null)
+        {
+            targets = new Transform[Targets.transform.childCount];
+            for (int i = 0; i < Targets.transform.childCount; i++)
+            {
+                targets[i] = Targets.transform.GetChild(i);
+            }
+            destinationButton.image.color = normalColor; // Set button to normal color initially
+        }
+        else
+        {
+            Debug.LogError("Targets GameObject is not assigned!");
+        }
     }
 
     private void Update()
     {
-        // Reset target name
-        TargetName = "";
-
-        bool targetChanged = false; // Flag to track if target has changed
-
         foreach (var target in targets)
         {
-            string targetName = CheckTarget(userCamera, target);
-            if (!string.IsNullOrEmpty(targetName))
+            if (CheckTarget(userCamera, target))
             {
-                // Set the target name
-                TargetName = targetName;
-                // If target name has changed since last check, log it
-                if (TargetName != _lastTargetName)
+                if (_lastTargetName != target.name)
                 {
-                    _lastTargetName = TargetName;
-                    targetChanged = true;
+                    _lastTargetName = target.name;
+                    Debug.Log($"New target reached: {_lastTargetName}");
+                    ProcessTargetChange();
                 }
+                return; // Exit loop once the target is processed
             }
         }
 
-        // If target hasn't changed since last check, don't spam messages
-        if (targetChanged)
-        {
-            Debug.Log("Target Name: " + TargetName);
-            {
-                string targetNameWithSpace = TargetName.Insert(3, " ");
-
-                titleModify.ChangeText(targetNameWithSpace);
-                canvasCentering.ToggleCanvasVisibility();
-
-                try
-                {
-                    scrapper.TriggerDatabaseData(TargetName);
-
-                }
-                catch
-                {
-                    string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
-                    if (File.Exists(filePath))
-                    {
-                        // Delete the file if it exists
-                        File.Delete(filePath);
-                        Debug.Log("Doesn't work");
-                    }
-                    GameObject content = GameObject.Find("content");
-                    bCreate.DestroyExistingBoxes(content);
-                }
-                bCreate.boxCreation();
-            }
-        }
+        // Reset to normal color if no targets are processed
+        destinationButton.image.color = normalColor;
     }
-    private string CheckTarget(Transform userCamera, Transform target)
+
+    private bool CheckTarget(Transform userCamera, Transform target)
     {
         Vector3 directionToTarget = target.position - userCamera.position;
         float angle = Vector3.Angle(userCamera.forward, directionToTarget);
         float distance = directionToTarget.magnitude;
 
-        // Determine if the target is within range and angle is less than or equal to maxAngle
-        if (angle <= maxAngle && distance <= maxDistance)
-        {
-            return target.name;
-        }
+        // Check if within range and angle
+        bool isTargetFocused = distance <= maxDistance && angle <= maxAngle;
 
-        return null;
+        // Debugging to show which target is being checked and the result'
+        if(isTargetFocused){
+            Debug.Log($"Checking target: {target.name} | Distance: {distance} | Angle: {angle} | Focused: {isTargetFocused}");
+        }
+        return isTargetFocused;
+    }
+
+
+    private void ProcessTargetChange()
+    {
+        // Change the button color to indicate the target has been reached
+        destinationButton.image.color = reachedColor;
+        Debug.Log($"Color changed to reachedColor for target: {_lastTargetName}");
+
+        // Perform other actions like updating text or handling data
+        titleModify.ChangeText(_lastTargetName); // Change the text to indicate the reached target
+        bCreate.boxCreation(); // Create boxes or other visual feedback
+
+        // Triggering data-related actions without affecting visibility
+        try
+        {
+            scrapper.TriggerDatabaseData(_lastTargetName);
+        }
+        catch
+        {
+            HandleDataFailure();
+        }
+    }
+
+    private void HandleDataFailure()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            Debug.Log("Database access failed, schedule.txt deleted.");
+        }
     }
 }
