@@ -1,0 +1,212 @@
+RLC102
+Monday
+CMPT 334|8:00 am - 9:15 am
+CMPT 102|9:30 am - 10:45 am
+CS Tutoring|1:30 pm - 2:30 pm
+CMPG 763|1:30 pm - 2:30 pm
+CMPG 363|1:30 pm - 2:30 pm
+CMPT 490|3:30 pm - 5:20 pm
+daybreak
+Tuesday
+CMPT 155|8:00 am - 8:50 am
+CMPT 155|9:00 am - 9:50 am
+CMPT 101|11:00 am - 12:15 pm
+CMPT 102|12:30 pm - 1:45 pm
+CMPT 312|2:00 pm - 3:15 pm
+MATH 151|5:30 pm - 6:20 pm
+MATH 230|6:30 pm -7:45 pm
+daybreak
+Wednesday
+CMPT 155|8:00 am - 8:50 am
+CMPT 155|9:00 am - 9:50 am
+CMPT 185|11:00 am - 11:50 pm
+CMPT 186|1:00 pm - 1:50 pm
+CS Tutoring|2:00 pm - 3:00 pm
+MATH 186|3:00 pm - 3:50 pm
+MATH 151|5:30 pm -6:20 pm
+daybreak
+Thursday
+CMPT 334|8:00 am - 9:15 am
+CMPT 102|9:30 am - 10:45 am
+CMPG 763|1:30 pm - 2:45 pm
+CMPT 363|1:30 pm - 2:45 pm
+CS Tutoring|1:45 pm - 2:45 pm
+CMPT 490|3:00 pm - 5:20 pm
+MATH 151|5:30 pm - 6:20 pm
+MATH 230|6:30 pm - 7:45 pm
+daybreak
+Friday
+CMPT 155|8:00 am - 8:50 am,
+CMPT 155|9:00 am - 9:50 am,
+CMPT 101 |11:00 am - 12:15 pm
+CMPT 102|12:30 pm - 1:45 pm
+CS Tutoring|2:00 pm - 3:00 pm,
+CMPT 312|2:00 pm - 3:15 pm,
+CMPG 769|3:30 pm - 6:00 pm,
+CMPT 369|3:30 pm - 6:00 pm,
+CMPG 612|6:30 pm - 9:15 pm,
+break
+RLC102a
+Monday
+CS Tutoring|1:30 pm - 2:30 pm
+daybreak
+Wednesday
+CS Tutoring|2:00 pm - 3:00 pm
+daybreak
+Thursday
+CS Tutoring|1:45 pm - 2:45 pm
+daybreak
+Friday
+CS Tutoring|2:00 pm - 3:00 pm
+break
+RLC104
+Monday
+CMPT 240|9:30 am - 10:45 am
+CMPG 742|12:00 pm - 1:15 pm
+CMPT 342|12:00 pm - 1:15 pm
+daybreak
+Tuesday
+CMPT 258|11:00 am - 12:15 pm
+CMPT 258|12:30 pm - 1:45 pm
+ENGS 116|2:00 pm - 3:15 pm
+daybreak
+Thursday
+CMPT 240|9:30 am - 10:45 am
+CMPG 742|12:00 pm - 1:15 pm
+CMPT 342|12:00 pm - 1:15 pm
+daybreak
+Friday
+CMPT 258|11:00 am - 12:15 pm
+CMPT 258|12:30 pm - 1:45 pm
+ENGS 116|2:00 pm - 3:15 pm
+break
+RLC105
+Monday
+ENGS 116|8:00 am - 9:15 am
+ENGS 116|9:30 am - 10:45 am
+ENGS 116|12:00 pm - 1:15 pm
+MECH 312|1:30 pm - 2:45 pm
+daybreak
+Tuesday
+MATH 336|9:00 am - 9:50 am
+MATH 336|10:00 am - 10:50 am
+CMPT 367|11:00 am - 12:15 pm
+CMPG 770|12:30 pm - 1:45 pm
+CMPG 370|12:30 pm - 1:45 pm
+daybreak
+Wednesday
+MATH 336|9:00 am - 9:50 am
+MATH 336|10:00 am - 10:50 am
+MATH 185|11:00 am - 11:50 am
+MATH 285|1:00 pm - 1:50 pm
+MATH 285|2:00 pm - 2:50 pm
+daybreak
+Thursday
+ENGS 116|8:00 am - 9:15 am
+ENGS 116|9:30 am - 10:45 am
+ENGS 116|12:00 pm - 1:15 pm
+MECH 312|1:30 pm - 2:45 pm
+CEEN 405|6:30 pm - 9:15 pm
+COMG 605|6:30 pm - 9:15 pm
+daybreak
+Friday
+MATH 336|9:00 am - 9:50 am
+MATH 336|10:00 am - 10:50 am
+CMPT 367|11:00 am - 12:15 pm
+CMPG 770|12:30 pm - 1:45 pm
+CMPG 370|12:30 pm - 1:45 pm
+Leetcode Review|3:30 pm - 4:30 pm
+break
+RLC107
+Monday
+ENGS 116|9:30 am - 10:45 am
+ENGS 116|12:00 pm - 1:15 pm
+ENGS 116|1:30 pm - 2:45 pm
+daybreak
+Tuesday
+MATH 286|9:00 am - 9:50 am
+ENGS 116|11:00 am - 12:15 pm
+MATH 286|1:00 pm - 1:50 pm
+daybreak
+Wednesday
+MATH 186|9:00 am - 9:50 am
+MATH 186|11:00 am - 11:50 am
+MATH 186|2:00 pm - 2:50 pm
+daybreak
+Thursday
+ENGS 116|9:30 am - 10:45 am
+ENGS 116|12:00 pm - 1:15 pm
+ENGS 116|1:30 pm - 2:45 pm
+Tutorial Session|4:00 pm - 5:30 pm
+daybreak
+Friday
+ENGS 116|11:00 am - 12:15 pm
+break
+RLC200
+Monday
+MECH 325|12:00 pm - 1:15 pm
+daybreak
+Tuesday
+MECG 702|9:00 am - 12:15 pm
+MATH 222|12:30 pm - 1:45 pm
+MATH 328|2:00 pm - 3:15 pm
+Mathematics Department|3:30 pm - 5:00 pm
+daybreak
+Wednesday
+Math Meeting|12:00 pm - 12:55 pm
+MECH 325|1:00 pm - 1:50 pm
+MATH 328|2:00 pm - 3:15 pm
+daybreak
+Thursday
+MECH 325|12:00 pm - 1:15 pm
+daybreak
+Friday
+ENGS 205|10:00 am - 10:50 am
+MATH 222|12:30 pm - 1:45 pm
+break
+RLC205
+Monday
+MECH 325|8:00 am - 9:15 am
+CMPT 335|12:00 pm - 1:15 pm
+daybreak
+Tuesday
+SCI 101|9:00 am - 9:50 am 
+MATH 286|10:00 am - 10:50 am
+MATH 154|11:00 am - 12:15 pm
+ENGS 205|12:30 pm - 1:45 pm
+MATH 154|2:00 pm - 3:15 pm
+Tau Sigma|3:30 pm - 4:30 pm
+daybreak
+Wednesday
+MECH 325|8:00 am - 9:15 am
+MATH 286|10:00 am - 10:50 am
+daybreak
+Thursday
+MECH 325|8:00 am - 9:15 am
+CMPT 335|12:00 pm - 1:15 pm
+daybreak
+Friday
+MATH 286|10:00 am - 10:50 am
+MATH 154|11:00 am - 12:15 pm
+ENGS 205|12:30 pm - 1:45 pm
+MATH 154|2:00 pm - 3:15 pm
+break
+RLC208
+Monday
+MECH 332|9:30 am - 10:45 am
+MECG 631|1:30 pm - 2:45 pm
+MECH 483|1:30 pm - 2:45 pm
+MECH 332|3:00 pm - 4:15 pm
+daybreak
+Tuesday
+ENGS 116|11:00 am - 12:15 pm
+daybreak
+Thursday
+MECH 332|9:30 am - 10:45 am
+MECG 631|1:30 pm - 2:45 pm
+MECH 483|1:30 pm - 2:45 pm
+MECH 332|3:00 pm - 4:15 pm
+daybreak
+Friday
+ENGS 116|11:00 am - 12:15 pm
+break
