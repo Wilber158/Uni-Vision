@@ -44,15 +44,6 @@ public class SetNavigationTarget : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetKeyDown(KeyCode.T))
-        {
-            lineToggle = !lineToggle;
-            if (!lineToggle)
-            {
-                line.enabled = false;
-                destinationText.text = ""; // Clear the text when line is not active
-            }
-        }
 
         if (lineToggle)
         {
@@ -138,4 +129,16 @@ public class SetNavigationTarget : MonoBehaviour
         allowUIAppear = false;
         destinationReachedGUI.SetActive(false);
     }
+    
+
+    public void ToggleNavigationLine()
+    {
+        lineToggle = !lineToggle;
+        if (!lineToggle)
+        {
+            line.enabled = false;
+            destinationText.text = ""; // Clear the text when line is not active
+        }
+    }
+
 }
