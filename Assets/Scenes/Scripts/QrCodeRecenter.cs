@@ -58,7 +58,10 @@ public class QrCodeRecenter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SetQrCodeRecenterTarget("End_3");
+            SetQrCodeRecenterTarget("MiddleFloor_2");
+        }
+        if(Input.GetKeyDown(KeyCode.A)){
+            SetQrCodeRecenterTarget("End_2");
         }
     }
 
@@ -70,7 +73,6 @@ public class QrCodeRecenter : MonoBehaviour
             return;
 
         lastScanTime = Time.time;
-        Debug.Log("Scanning for QR Codes...");
         if (!cameraManager.TryAcquireLatestCpuImage(out XRCpuImage image))
         {
             Debug.LogWarning("Failed to acquire latest CPU image.");
