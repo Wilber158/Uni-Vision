@@ -44,7 +44,7 @@ public class SetNavigationTarget : MonoBehaviour
 
     private void Update()
     {
-
+        // Only run checks if the line is actually toggled on
         if (lineToggle)
         {
             float distanceMoved = Vector3.Distance(userIndicatorTransform.position, lastPositionUpdate);
@@ -59,48 +59,36 @@ public class SetNavigationTarget : MonoBehaviour
 
     private void UpdateNavigationLine()
     {
-        if (targetPosition != Vector3.zero && NavMesh.CalculatePath(userIndicatorTransform.position, targetPosition, NavMesh.AllAreas, path))
+        // Always verify lineToggle to decide on line visibility
+        line.enabled = lineToggle && targetPosition != Vector3.zero && NavMesh.CalculatePath(userIndicatorTransform.position, targetPosition, NavMesh.AllAreas, path);
+
+        if (line.enabled && path.status == NavMeshPathStatus.PathComplete)
         {
-            if (path.status == NavMeshPathStatus.PathComplete)
-            {
-                line.positionCount = path.corners.Length;
-                line.SetPositions(path.corners);
-                line.enabled = true;
-            }
-            else
-            {
-                line.enabled = false;
-            }
+            line.positionCount = path.corners.Length;
+            line.SetPositions(path.corners);
         }
     }
-
     private void SetCurrentNavigationTarget(int selectedValue, bool forceUpdate)
     {
+        // Ensure consistent state when changing targets
         var target = DynamicDropdownPopulator.Instance.navigationTargetObjects[selectedValue];
+        targetPosition = target.PositionObject.position;
+        isFinalDestination = !target.IsStair;
 
-        // Determine if the floor change or force update requires recalculating the path
         if (forceUpdate || floorManager.currentFloor != target.FloorNumber)
         {
-            // Adjust the target based on the floor change
             if (floorManager.currentFloor != target.FloorNumber)
             {
-                targetPosition = FindNearestStairwell(floorManager.currentFloor)?.PositionObject.position ?? target.PositionObject.position;
-                isFinalDestination = false; // Mark as not final if it is a stairwell
+                targetPosition = FindNearestStairwell(floorManager.currentFloor)?.PositionObject.position ?? targetPosition;
+                isFinalDestination = false; // Intermediate target
             }
-            else
-            {
-                targetPosition = target.PositionObject.position;
-                isFinalDestination = !target.IsStair;
-            }
+
+            // Ensure line visibility is updated with the state
+            lineToggle = true;
             UpdateNavigationLine();
         }
-        else if (!forceUpdate && floorManager.currentFloor == target.FloorNumber)
-        {
-            // This ensures that if we are already on the correct floor, we confirm it is the final destination.
-            isFinalDestination = !target.IsStair;
-        }
 
-        allowUIAppear = true; // Always allow UI to appear again after an update
+        allowUIAppear = true; // Reset UI visibility flag
     }
 
 
@@ -134,9 +122,9 @@ public class SetNavigationTarget : MonoBehaviour
     public void ToggleNavigationLine()
     {
         lineToggle = !lineToggle;
+        line.enabled = lineToggle; // Ensure line visibility matches the toggle state
         if (!lineToggle)
         {
-            line.enabled = false;
             destinationText.text = ""; // Clear the text when line is not active
         }
     }
