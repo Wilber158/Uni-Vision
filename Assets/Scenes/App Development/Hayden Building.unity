@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4005,6 +4005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c7ebc9a1a48403e9541d126f16b0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Targets: {fileID: 0}
   userCamera: {fileID: 695813757}
   targets:
   - {fileID: 0}
@@ -4022,6 +4023,9 @@ MonoBehaviour:
   canvasCentering: {fileID: 883188669}
   titleModify: {fileID: 95047833}
   bCreate: {fileID: 159621383}
+  destinationButton: {fileID: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  reachedColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &695813760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6813,6 +6817,7 @@ GameObject:
   - component: {fileID: 1087793884}
   - component: {fileID: 1087793883}
   - component: {fileID: 1087793882}
+  - component: {fileID: 1087793886}
   m_Layer: 6
   m_Name: Indicator Sphere
   m_TagString: Untagged
@@ -6926,6 +6931,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087793880}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1087793886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087793880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81d202c47d46414482113b0240dcf4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorText: {fileID: 1671345694}
+  currentFloor: -1
 --- !u!1 &1120265211
 GameObject:
   m_ObjectHideFlags: 0
@@ -10225,6 +10244,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1429178353}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1429178355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1412057935633850234, guid: 70c6d0a2af3b04637879c6373e4a2014,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429178353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1429528506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10967,8 +10998,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0beea6e8f52944a1cb5dd9e9a54d114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationTargetDropdown: {fileID: 0}
-  floorManager: {fileID: 0}
+  navigationTargetDropdown: {fileID: 1429178355}
+  floorManager: {fileID: 1087793886}
+  destinationText: {fileID: 0}
+  destinationReachedGUI: {fileID: 0}
 --- !u!1818360608 &1598717417
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -14746,7 +14779,6 @@ SceneRoots:
   - {fileID: 665390817}
   - {fileID: 953217664}
   - {fileID: 1157685288}
-  - {fileID: 1387198578}
   - {fileID: 1720663351}
   - {fileID: 1205292895}
   - {fileID: 883188668}
@@ -14755,3 +14787,4 @@ SceneRoots:
   - {fileID: 769753861}
   - {fileID: 1598717419}
   - {fileID: 1370955907}
+  - {fileID: 1387198578}
