@@ -72,7 +72,7 @@ public class TargetLookChecker : MonoBehaviour
 
         // Debugging to show which target is being checked and the result'
         if(isTargetFocused){
-            Debug.Log($"Checking target: {target.name} | Distance: {distance} | Angle: {angle} | Focused: {isTargetFocused}");
+            //Debug.Log($"Checking target: {target.name} | Distance: {distance} | Angle: {angle} | Focused: {isTargetFocused}");
         }
         return isTargetFocused;
     }

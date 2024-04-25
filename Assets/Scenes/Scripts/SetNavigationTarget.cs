@@ -94,7 +94,7 @@ public class SetNavigationTarget : MonoBehaviour
 
     private void CheckProximityToTarget()
     {
-        Debug.Log($"Checking proximity: position={userIndicatorTransform.position}, targetPosition={targetPosition}, isFinalDestination={isFinalDestination}");
+        //Debug.Log($"Checking proximity: position={userIndicatorTransform.position}, targetPosition={targetPosition}, isFinalDestination={isFinalDestination}");
         if (allowUIAppear && Vector3.Distance(userIndicatorTransform.position, targetPosition) < proximityThreshold && isFinalDestination)
         {
             Debug.Log("Destination reached, showing UI.");

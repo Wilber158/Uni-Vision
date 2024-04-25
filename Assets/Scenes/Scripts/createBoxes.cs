@@ -15,7 +15,6 @@ namespace MyNamespace
             if (content == null)
             {
                 Debug.LogError("Failed to find 'content' GameObject.");
-                return;
             }
             DestroyExistingBoxes(content);
 
