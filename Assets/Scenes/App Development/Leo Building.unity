@@ -399,7 +399,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3565fb75abf154b89ac411d7616b227d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 39517355}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3565fb75abf154b89ac411d7616b227d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 39517354}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 3565fb75abf154b89ac411d7616b227d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 39517353}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 3565fb75abf154b89ac411d7616b227d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 39517352}
   m_SourcePrefab: {fileID: 100100000, guid: 3565fb75abf154b89ac411d7616b227d, type: 3}
 --- !u!4 &39517349 stripped
 Transform:
@@ -407,6 +423,116 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 39517348}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &39517350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 3565fb75abf154b89ac411d7616b227d,
+    type: 3}
+  m_PrefabInstance: {fileID: 39517348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &39517351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3565fb75abf154b89ac411d7616b227d,
+    type: 3}
+  m_PrefabInstance: {fileID: 39517348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &39517352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39517350}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 46.14373, y: 2.179328, z: 60.052685}
+  m_Center: {x: -0.0000009536743, y: -0.35873303, z: 0}
+--- !u!114 &39517353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39517350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbefdaaaf6844810861ae1e3a436b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorNumber: 1
+--- !u!23 &39517354
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39517351}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &39517355
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39517351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &46866697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,7 +2748,7 @@ GameObject:
   - component: {fileID: 292690621}
   - component: {fileID: 292690620}
   m_Layer: 8
-  m_Name: Staircase_1_B
+  m_Name: Stairwell_1_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3088,7 +3214,7 @@ GameObject:
   - component: {fileID: 330565292}
   - component: {fileID: 330565291}
   m_Layer: 8
-  m_Name: Staircase_2_C
+  m_Name: Stairwell_2_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3737,7 +3863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81d202c47d46414482113b0240dcf4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorText: {fileID: 0}
+  floorText: {fileID: 1552397762}
   currentFloor: 0
 --- !u!54 &429372827
 Rigidbody:
@@ -4095,7 +4221,7 @@ GameObject:
   - component: {fileID: 461637067}
   - component: {fileID: 461637066}
   m_Layer: 8
-  m_Name: Staircase_3_C
+  m_Name: Stairwell_3_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4515,7 +4641,7 @@ GameObject:
   - component: {fileID: 493615520}
   - component: {fileID: 493615519}
   m_Layer: 8
-  m_Name: Staircase_1_H
+  m_Name: Stairwell_1_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6104,13 +6230,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  maxAngle: 10
+  maxAngle: 15
   maxDistance: 9
   scrapper: {fileID: 595119867}
   canvasCentering: {fileID: 715598079}
   titleModify: {fileID: 1991654485}
   bCreate: {fileID: 1696308010}
-  destinationButton: {fileID: 0}
+  destinationButton: {fileID: 646866864}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   reachedColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &595119869
@@ -7322,10 +7448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0beea6e8f52944a1cb5dd9e9a54d114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationTargetDropdown: {fileID: 0}
+  navigationTargetDropdown: {fileID: 1574686703}
   floorManager: {fileID: 429372826}
-  destinationText: {fileID: 0}
-  destinationReachedGUI: {fileID: 0}
+  destinationText: {fileID: 2117629121}
+  destinationReachedGUI: {fileID: 1931793853}
 --- !u!4 &683288402
 Transform:
   m_ObjectHideFlags: 0
@@ -8946,7 +9072,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 683288400}
     - target: {fileID: 1412057935633850234, guid: 70c6d0a2af3b04637879c6373e4a2014,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -8955,7 +9081,7 @@ PrefabInstance:
     - target: {fileID: 1412057935633850234, guid: 70c6d0a2af3b04637879c6373e4a2014,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetCurrentNavigationTarget
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1412057935633850234, guid: 70c6d0a2af3b04637879c6373e4a2014,
         type: 3}
@@ -9351,7 +9477,7 @@ PrefabInstance:
         type: 3}
       propertyPath: targetParent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 573443460}
     - target: {fileID: 6793186765544845506, guid: 70c6d0a2af3b04637879c6373e4a2014,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10559,7 +10685,7 @@ GameObject:
   - component: {fileID: 956955735}
   - component: {fileID: 956955734}
   m_Layer: 8
-  m_Name: Staircase_2_F
+  m_Name: Stairwell_2_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11724,7 +11850,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 683288401}
         m_TargetAssemblyTypeName: SetNavigationTarget, Assembly-CSharp
         m_MethodName: ResetUIAppearance
         m_Mode: 1
@@ -12207,7 +12333,7 @@ GameObject:
   - component: {fileID: 1081275575}
   - component: {fileID: 1081275574}
   m_Layer: 8
-  m_Name: Staircase_1_E
+  m_Name: Stairwell_1_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12312,7 +12438,7 @@ GameObject:
   - component: {fileID: 1084085841}
   - component: {fileID: 1084085840}
   m_Layer: 8
-  m_Name: Staircase_2_B
+  m_Name: Stairwell_2_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12522,7 +12648,7 @@ GameObject:
   - component: {fileID: 1105448588}
   - component: {fileID: 1105448587}
   m_Layer: 8
-  m_Name: Staircase_2_G
+  m_Name: Stairwell_2_G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15024,7 +15150,7 @@ GameObject:
   - component: {fileID: 1544562899}
   - component: {fileID: 1544562898}
   m_Layer: 8
-  m_Name: Stiarcase_3_B
+  m_Name: Stairwell_3_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15287,7 +15413,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bf40418caf70341458f62e347aaf399d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551973732}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bf40418caf70341458f62e347aaf399d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551973731}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: bf40418caf70341458f62e347aaf399d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551973730}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: bf40418caf70341458f62e347aaf399d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551973729}
   m_SourcePrefab: {fileID: 100100000, guid: bf40418caf70341458f62e347aaf399d, type: 3}
 --- !u!4 &1551973726 stripped
 Transform:
@@ -15295,6 +15437,116 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1551973725}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1551973727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: bf40418caf70341458f62e347aaf399d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551973725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1551973728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bf40418caf70341458f62e347aaf399d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551973725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1551973729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551973727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbefdaaaf6844810861ae1e3a436b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorNumber: 2
+--- !u!65 &1551973730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551973727}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 46.112747, y: 1.959923, z: 63.20571}
+  m_Center: {x: 0.057814598, y: -0.6355835, z: -0.08253479}
+--- !u!23 &1551973731
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551973728}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1551973732
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551973728}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1552397760
 GameObject:
   m_ObjectHideFlags: 0
@@ -15534,6 +15786,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564862437}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1574686703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1412057935633850234, guid: 70c6d0a2af3b04637879c6373e4a2014,
+    type: 3}
+  m_PrefabInstance: {fileID: 864137832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1614281249
 GameObject:
   m_ObjectHideFlags: 0
@@ -15996,7 +16260,7 @@ GameObject:
   - component: {fileID: 1652699101}
   - component: {fileID: 1652699100}
   m_Layer: 8
-  m_Name: Staircase_3_D
+  m_Name: Stairwell_3_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16164,7 +16428,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 014dd6608a3614a4f82bf6d5b1a73302,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659920166}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 014dd6608a3614a4f82bf6d5b1a73302,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659920165}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 014dd6608a3614a4f82bf6d5b1a73302,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659920164}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 014dd6608a3614a4f82bf6d5b1a73302,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1659920163}
   m_SourcePrefab: {fileID: 100100000, guid: 014dd6608a3614a4f82bf6d5b1a73302, type: 3}
 --- !u!4 &1659920160 stripped
 Transform:
@@ -16172,6 +16452,116 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1659920159}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1659920161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 014dd6608a3614a4f82bf6d5b1a73302,
+    type: 3}
+  m_PrefabInstance: {fileID: 1659920159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1659920162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 014dd6608a3614a4f82bf6d5b1a73302,
+    type: 3}
+  m_PrefabInstance: {fileID: 1659920159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1659920163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659920161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbefdaaaf6844810861ae1e3a436b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorNumber: 3
+--- !u!65 &1659920164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659920161}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 61.34677, y: 2.292033, z: 53.860268}
+  m_Center: {x: -0.007030487, y: -0.56321347, z: -0.0000009536743}
+--- !u!23 &1659920165
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659920162}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1659920166
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659920162}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1660978514
 GameObject:
   m_ObjectHideFlags: 0
@@ -16185,7 +16575,7 @@ GameObject:
   - component: {fileID: 1660978517}
   - component: {fileID: 1660978516}
   m_Layer: 8
-  m_Name: Staircase_3_E
+  m_Name: Stairwell_3_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17366,7 +17756,7 @@ GameObject:
   - component: {fileID: 1872263686}
   - component: {fileID: 1872263685}
   m_Layer: 8
-  m_Name: Staircase_1_D
+  m_Name: Stairwell_1_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17784,7 +18174,6 @@ GameObject:
   - component: {fileID: 1929478233}
   - component: {fileID: 1929478234}
   - component: {fileID: 1929478236}
-  - component: {fileID: 1929478235}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -17825,21 +18214,6 @@ MonoBehaviour:
   m_CameraFloorOffsetObject: {fileID: 544869665}
   m_RequestedTrackingOriginMode: 0
   m_CameraYOffset: 1.1176
---- !u!114 &1929478235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929478232}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 0}
-  m_MaxNumberOfMovingImages: 0
-  m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &1929478236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17994,7 +18368,7 @@ GameObject:
   - component: {fileID: 1931861302}
   - component: {fileID: 1931861301}
   m_Layer: 8
-  m_Name: Staircase_2_Exit
+  m_Name: Stairwell_2_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18099,7 +18473,7 @@ GameObject:
   - component: {fileID: 1947926679}
   - component: {fileID: 1947926678}
   m_Layer: 8
-  m_Name: Staircase_2_E
+  m_Name: Stairwell_2_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19344,7 +19718,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 57ef615e9650a425b8a711ad37c54d7d, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &2047626652
 Transform:
@@ -19374,7 +19748,7 @@ GameObject:
   - component: {fileID: 2058234674}
   - component: {fileID: 2058234673}
   m_Layer: 8
-  m_Name: Staircase_1_G
+  m_Name: Stairwell_1_G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19479,7 +19853,7 @@ GameObject:
   - component: {fileID: 2068677856}
   - component: {fileID: 2068677855}
   m_Layer: 8
-  m_Name: Staircase_3_G
+  m_Name: Stairwell_3_G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19794,7 +20168,7 @@ GameObject:
   - component: {fileID: 2101537119}
   - component: {fileID: 2101537118}
   m_Layer: 8
-  m_Name: Staircase_3_H
+  m_Name: Stairwell_3_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19899,7 +20273,7 @@ GameObject:
   - component: {fileID: 2111282608}
   - component: {fileID: 2111282607}
   m_Layer: 8
-  m_Name: Staircase_2_H
+  m_Name: Stairwell_2_H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20257,7 +20631,7 @@ GameObject:
   - component: {fileID: 2145551089}
   - component: {fileID: 2145551088}
   m_Layer: 8
-  m_Name: Staircase_1_F
+  m_Name: Stairwell_1_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20353,15 +20727,15 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1192014130}
   - {fileID: 662659123}
-  - {fileID: 764380141}
   - {fileID: 2047626652}
-  - {fileID: 677317764}
-  - {fileID: 1006249706}
+  - {fileID: 1192014130}
   - {fileID: 1929478233}
+  - {fileID: 677317764}
   - {fileID: 683288402}
-  - {fileID: 324626146}
-  - {fileID: 1441173399}
+  - {fileID: 764380141}
+  - {fileID: 1006249706}
   - {fileID: 864137832}
+  - {fileID: 1441173399}
   - {fileID: 877023987}
+  - {fileID: 324626146}
