@@ -1,0 +1,14 @@
+Class: ENGS 116
+Event Time: 8:00 am - 9:15 am
+Event Time: 9:30 am - 10:45 am
+Event Time: 12:00 pm - 1:15 pm
+
+Class: MECH 312
+Event Time: 1:30 pm - 2:45 pm
+
+Class: CEEN 405
+Event Time: 6:30 pm - 9:15 pm
+
+Class: COMG 605
+Event Time: 6:30 pm - 9:15 pm
+

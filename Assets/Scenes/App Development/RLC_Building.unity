@@ -8222,7 +8222,7 @@ MonoBehaviour:
   scrapper: {fileID: 1622380433}
   canvasCentering: {fileID: 1340922374}
   titleModify: {fileID: 1836691826}
-  bCreate: {fileID: 1762993701}
+  createBoxes: {fileID: 1762993701}
 --- !u!114 &1622380433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8235,6 +8235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412ce001e69b59408594b053800f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dbDirectory: Resources/db
 --- !u!1 &1641350905
 GameObject:
   m_ObjectHideFlags: 0
@@ -8790,6 +8791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875effc7656bb14cb90d7c4869a21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  content: {fileID: 0}
+  fontAsset: {fileID: 0}
 --- !u!1 &1768638268
 GameObject:
   m_ObjectHideFlags: 0

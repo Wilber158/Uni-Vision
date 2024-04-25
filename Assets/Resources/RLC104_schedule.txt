@@ -1,0 +1,9 @@
+Class: CMPT 240
+Event Time: 9:30 am - 10:45 am
+
+Class: CMPG 742
+Event Time: 12:00 pm - 1:15 pm
+
+Class: CMPT 342
+Event Time: 12:00 pm - 1:15 pm
+

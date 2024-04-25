@@ -1,104 +1,97 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using System.IO;
 using System;
 
 namespace MyNamespace
 {
-    public class createBoxes : MonoBehaviour
+    public class CreateBoxes : MonoBehaviour
     {
-        public void boxCreation()
+        [SerializeField] private GameObject content; // Assign this in the inspector to avoid runtime errors
+        [SerializeField] private TMP_FontAsset fontAsset; // Also assign this in the inspector
+
+        private void Start()
         {
-            // Get the Canvas to be the parent of the boxes
-            GameObject content = GameObject.Find("content");
             if (content == null)
             {
-                Debug.LogError("Failed to find 'content' GameObject.");
+                Debug.LogError("Content GameObject is not assigned in the inspector.");
+                return;
             }
-            //DestroyExistingBoxes(content);
 
-            // Load the default font asset for TextMeshPro
-            TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/ARIAL SDF");
             if (fontAsset == null)
             {
-                Debug.LogError("Failed to load font asset.");
+                Debug.LogError("Font asset is not assigned in the inspector.");
+                return;
+            }
+        }
+
+        public void UpdateBoxes(string targetName)
+        {
+            // Ensure existing boxes are destroyed before creating new ones
+            DestroyExistingBoxes();
+
+            // Attempt to load the scheduled data file for the current target
+            string scheduleFilePath = $"Resources/{targetName}_schedule.txt";
+            TextAsset textAsset = Resources.Load<TextAsset>(scheduleFilePath);
+
+            if (textAsset == null)
+            {
+                Debug.LogError($"Failed to load the schedule text file for: {targetName}");
+                return;
             }
 
-            TextAsset textAsset = Resources.Load<TextAsset>("schedule");
+            CreateBoxesFromSchedule(textAsset.text);
+        }
 
-            if (textAsset == null) {
-                    Debug.LogError("Failed to load the schedule text file.");
-                    return;
-            
-            
-            }
-            // Split the text of the schedule file into lines
-            string[] scheduleLines = textAsset.text.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        private void CreateBoxesFromSchedule(string scheduleData)
+        {
+            string[] scheduleLines = scheduleData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             if (scheduleLines.Length == 0)
             {
                 Debug.LogError("Schedule file is empty or not formatted correctly.");
                 return;
             }
 
-
-            // Loop to create the specified number of boxes
-            for (int i = 0; i < scheduleLines.Length - 1; i += 2)
+            for (int i = 0; i < scheduleLines.Length; i += 2)
             {
                 string className = scheduleLines[i];
                 string classTime = scheduleLines[i + 1];
-
-                Debug.Log($"Creating box for class: {className} at {classTime}");
-
-                // Create a new GameObject for the box
-                GameObject box = new GameObject("Box" + i);
-
-                // Set the parent of the box to the Canvas
-                box.transform.SetParent(content.transform, false);
-
-                // Add an Image component to the box
-                Image image = box.AddComponent<Image>();
-                image.color = new Color(253f / 255f, 253f / 255f, 253f / 255f); // Light grey
-
-                // Set the size and position of the box
-                RectTransform rectTransform = box.GetComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(2213, 657);
-
-                // Create a new GameObject for the text
-                GameObject textObject = new GameObject("Text" + i);
-                textObject.transform.SetParent(box.transform, false);
-
-                // Add a TextMeshProUGUI component to the text GameObject
-                TextMeshProUGUI textMeshPro = textObject.AddComponent<TextMeshProUGUI>();
-                textMeshPro.text = className + "\n" + classTime;
-                textMeshPro.font = fontAsset;
-                textMeshPro.fontSize = 140;
-                textMeshPro.color = Color.black;
-                textMeshPro.alignment = TextAlignmentOptions.Center;
-
-                RectTransform textRectTransform = textObject.GetComponent<RectTransform>();
-                textRectTransform.sizeDelta = new Vector2(2213, 657);
+                CreateBox(className, classTime, i);
             }
-
-            Debug.Log("All boxes created successfully.");
         }
 
-        public void DestroyExistingBoxes(GameObject parent)
+        private void CreateBox(string className, string classTime, int index)
         {
-            Debug.Log($"Destroying existing boxes under parent: {parent.name}");
-            while (parent.transform.childCount > 0)
+            GameObject box = new GameObject($"Box_{index}");
+            box.transform.SetParent(content.transform, false);
+            Image image = box.AddComponent<Image>();
+            image.color = new Color(0.99f, 0.99f, 0.99f); // Light grey
+
+            RectTransform rectTransform = box.GetComponent<RectTransform>();
+            rectTransform.sizeDelta = new Vector2(2213, 657);
+
+            GameObject textObject = new GameObject("Text");
+            textObject.transform.SetParent(box.transform, false);
+
+            TextMeshProUGUI textMeshPro = textObject.AddComponent<TextMeshProUGUI>();
+            textMeshPro.text = $"{className}\n{classTime}";
+            textMeshPro.font = fontAsset;
+            textMeshPro.fontSize = 140;
+            textMeshPro.color = Color.black;
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+
+            RectTransform textRectTransform = textObject.GetComponent<RectTransform>();
+            textRectTransform.sizeDelta = new Vector2(2213, 657);
+        }
+
+        private void DestroyExistingBoxes()
+        {
+            foreach (Transform child in content.transform)
             {
-                Transform child = parent.transform.GetChild(0);
-                try
-                {
-                    DestroyImmediate(child.gameObject);
-                    Debug.Log("Destroyed box: " + child.name);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("Failed to destroy child: " + e.Message);
-                }
+                Destroy(child.gameObject);
             }
+            Debug.Log("All existing boxes have been destroyed.");
         }
     }
 }
