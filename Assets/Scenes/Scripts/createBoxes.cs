@@ -16,7 +16,7 @@ namespace MyNamespace
             {
                 Debug.LogError("Failed to find 'content' GameObject.");
             }
-            DestroyExistingBoxes(content);
+            //DestroyExistingBoxes(content);
 
             // Load the default font asset for TextMeshPro
             TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/ARIAL SDF");

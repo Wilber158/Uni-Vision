@@ -9,13 +9,13 @@ public class SeleniumExample : MonoBehaviour
     private AddTextToTextMeshPro addTextToTextMeshPro;
 
 
-    public void TriggerDatabaseData(string targetName)
+    public void TriggerDatabaseData(string targetName, Action onComplete)
     {
-        // Call a method to retrieve event data from the database
         Dictionary<string, List<string>> eventData = RetrieveEventDataFromDatabase(targetName);
-        // Write the retrieved event data to a text file
         WriteEventDataToFile(eventData);
+        onComplete?.Invoke(); // Invoke the callback after the data is written
     }
+
 
     public Dictionary<string, List<string>> RetrieveEventDataFromDatabase(string targetName)
     {

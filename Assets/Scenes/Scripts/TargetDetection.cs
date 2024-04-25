@@ -87,17 +87,20 @@ public class TargetLookChecker : MonoBehaviour
     {
         destinationButton.image.color = reachedColor;
         titleModify.ChangeText(_lastTargetName); // Update UI text
-        bCreate.boxCreation(); // Trigger UI updates for new target
 
         try
         {
-            scrapper.TriggerDatabaseData(_lastTargetName);
+            scrapper.TriggerDatabaseData(_lastTargetName, () => {
+                // This callback is executed after the database operations are complete
+                bCreate.boxCreation(); // Now safe to create boxes with the new data
+            });
         }
         catch
         {
             HandleDataFailure();
         }
     }
+
 
     private void HandleDataFailure()
     {
