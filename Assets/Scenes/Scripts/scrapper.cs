@@ -11,8 +11,22 @@ public class SeleniumExample : MonoBehaviour
 
     public void TriggerDatabaseData(string targetName, Action onComplete)
     {
-        Dictionary<string, List<string>> eventData = RetrieveEventDataFromDatabase(targetName);
-        WriteEventDataToFile(eventData);
+        try{
+            Dictionary<string, List<string>> eventData = RetrieveEventDataFromDatabase(targetName);
+            WriteEventDataToFile(eventData);
+
+        }
+        catch{
+            string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
+            if (File.Exists(filePath))
+            {
+            // Delete the file if it exists
+                File.Delete(filePath);
+                Debug.Log("Deleted existing file: " + filePath);
+            }
+            Console.WriteLine("Database file does not exist.");
+
+        }
         onComplete?.Invoke(); // Invoke the callback after the data is written
     }
 

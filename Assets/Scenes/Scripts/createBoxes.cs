@@ -19,13 +19,13 @@ namespace MyNamespace
             //DestroyExistingBoxes(content);
 
             // Load the default font asset for TextMeshPro
-            TMP_FontAsset fontAsset = Resources.Load<TMP_FontAsset>("Fonts & Materials/ARIAL SDF");
-            if (fontAsset == null)
+            TMP_FontAsset randomFontAsset = fontAssets[Random.Range(0, fontAssets.Length)];
+            if (randomFontAsset == null)
             {
                 Debug.LogError("Failed to load font asset.");
             }
 
-            TextAsset textAsset = Resources.Load<TextAsset>("schedule");
+            TextAsset textAsset = Resources.Load<TextAsset>("schedule.txt");
 
             if (textAsset == null) {
                     Debug.LogError("Failed to load the schedule text file.");
