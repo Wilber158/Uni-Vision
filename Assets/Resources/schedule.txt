@@ -7,9 +7,6 @@ Event Time: 11:00 am - 11:50 am
 Class: MATH 186
 Event Time: 1:00 pm - 1:50 pm, 3:00 pm - 3:50 pm
 
-Class: CS Tutoring
-Event Time: 2:00 pm - 3:00 pm
-
 Class: MATH 151
 Event Time: 5:30 pm - 6:20 pm
 
