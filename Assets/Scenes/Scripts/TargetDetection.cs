@@ -6,10 +6,12 @@ using UnityEngine.UI; // Required for Button and Color manipulation
 public class TargetLookChecker : MonoBehaviour
 {
     [SerializeField] private GameObject Targets; // GameObject containing all targets as children
-    public Transform userCamera; // Assign your AR camera
-    public Transform[] targets; // Populated at runtime
-    public float maxAngle = 90f; // Max angle for "looking at"
-    public float maxDistance = 0.2f; // Max distance for "within range"
+    [SerializeField] private Transform userCamera; // Assign your AR camera
+    [SerializeField] private float maxAngle = 90f; // Max angle for "looking at"
+    [SerializeField] private float maxDistance = 0.2f; // Max distance for "within range"
+    [SerializeField] private Button destinationButton; // Button to change color
+    [SerializeField] private Color normalColor = Color.white; // Default color
+    [SerializeField] private Color reachedColor = Color.green; // Color when target is reached
 
     // References to other components
     public SeleniumExample scrapper;
@@ -17,22 +19,14 @@ public class TargetLookChecker : MonoBehaviour
     public AddTextToTextMeshPro titleModify;
     public createBoxes bCreate;
 
-    // UI Button to change color
-    [SerializeField] private Button destinationButton; // Button to change color
-    public Color normalColor = Color.white; // Default color
-    public Color reachedColor = Color.green; // Color when target is reached
-
+    private Transform[] targets; // Populated at runtime
     private string _lastTargetName; // Track the last target name
 
     private void Start()
     {
         if (Targets != null)
         {
-            targets = new Transform[Targets.transform.childCount];
-            for (int i = 0; i < Targets.transform.childCount; i++)
-            {
-                targets[i] = Targets.transform.GetChild(i);
-            }
+            PopulateTargets();
             destinationButton.image.color = normalColor; // Set button to normal color initially
         }
         else
@@ -41,8 +35,19 @@ public class TargetLookChecker : MonoBehaviour
         }
     }
 
+    private void PopulateTargets()
+    {
+        targets = new Transform[Targets.transform.childCount];
+        for (int i = 0; i < targets.Length; i++)
+        {
+            targets[i] = Targets.transform.GetChild(i);
+        }
+    }
+
     private void Update()
     {
+        bool isAnyTargetFocused = false;
+
         foreach (var target in targets)
         {
             if (CheckTarget(userCamera, target))
@@ -53,42 +58,37 @@ public class TargetLookChecker : MonoBehaviour
                     Debug.Log($"New target reached: {_lastTargetName}");
                     ProcessTargetChange();
                 }
-                return; // Exit loop once the target is processed
+                isAnyTargetFocused = true;
+                break; // Exit loop once the target is processed
             }
         }
 
-        // Reset to normal color if no targets are processed
-        destinationButton.image.color = normalColor;
+        if (!isAnyTargetFocused && _lastTargetName != null)
+        {
+            // Reset to normal color if no targets are currently processed
+            destinationButton.image.color = normalColor;
+            _lastTargetName = null; // Reset the last target name as no target is focused
+            Debug.Log("No target is currently focused. Resetting color.");
+        }
     }
+
 
     private bool CheckTarget(Transform userCamera, Transform target)
     {
         Vector3 directionToTarget = target.position - userCamera.position;
         float angle = Vector3.Angle(userCamera.forward, directionToTarget);
-        float distance = directionToTarget.magnitude;
+        float distance = Vector3.Distance(userCamera.position, target.position);
 
         // Check if within range and angle
-        bool isTargetFocused = distance <= maxDistance && angle <= maxAngle;
-
-        // Debugging to show which target is being checked and the result'
-        if(isTargetFocused){
-            //Debug.Log($"Checking target: {target.name} | Distance: {distance} | Angle: {angle} | Focused: {isTargetFocused}");
-        }
-        return isTargetFocused;
+        return distance <= maxDistance && angle <= maxAngle;
     }
-
 
     private void ProcessTargetChange()
     {
-        // Change the button color to indicate the target has been reached
         destinationButton.image.color = reachedColor;
-        Debug.Log($"Color changed to reachedColor for target: {_lastTargetName}");
+        titleModify.ChangeText(_lastTargetName); // Update UI text
+        bCreate.boxCreation(); // Trigger UI updates for new target
 
-        // Perform other actions like updating text or handling data
-        titleModify.ChangeText(_lastTargetName); // Change the text to indicate the reached target
-        bCreate.boxCreation(); // Create boxes or other visual feedback
-
-        // Triggering data-related actions without affecting visibility
         try
         {
             scrapper.TriggerDatabaseData(_lastTargetName);
@@ -101,11 +101,11 @@ public class TargetLookChecker : MonoBehaviour
 
     private void HandleDataFailure()
     {
-        string filePath = Path.Combine(Application.dataPath, "Resources", "schedule.txt");
+        string filePath = Path.Combine(Application.persistentDataPath, "schedule.txt");
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
-            Debug.Log("Database access failed, schedule.txt deleted.");
+            Debug.LogError("Database access failed, schedule.txt deleted.");
         }
     }
 }
