@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.IO;
+using System.Collections.Generic;
 using System;
 
 namespace MyNamespace
@@ -26,38 +27,26 @@ namespace MyNamespace
             }
         }
 
-        public void UpdateBoxes(string targetName)
+        public void UpdateBoxes(Dictionary<string,List<string>>eventData)
         {
             // Ensure existing boxes are destroyed before creating new ones
             DestroyExistingBoxes();
-
-            // Attempt to load the scheduled data file for the current target
-            string scheduleFilePath = $"Resources/{targetName}_schedule.txt";
-            TextAsset textAsset = Resources.Load<TextAsset>(scheduleFilePath);
-
-            if (textAsset == null)
-            {
-                Debug.LogError($"Failed to load the schedule text file for: {targetName}");
-                return;
-            }
-
-            CreateBoxesFromSchedule(textAsset.text);
+            Debug.Log($"Event Data: {eventData}");
+            CreateBoxesFromEventData(eventData);
+            Debug.Log("Createboxes called!");
         }
 
-        private void CreateBoxesFromSchedule(string scheduleData)
+        private void CreateBoxesFromEventData(Dictionary<string, List<string>> eventData)
         {
-            string[] scheduleLines = scheduleData.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-            if (scheduleLines.Length == 0)
+            int index = 0;
+            foreach (KeyValuePair<string, List<string>> entry in eventData)
             {
-                Debug.LogError("Schedule file is empty or not formatted correctly.");
-                return;
-            }
-
-            for (int i = 0; i < scheduleLines.Length; i += 2)
-            {
-                string className = scheduleLines[i];
-                string classTime = scheduleLines[i + 1];
-                CreateBox(className, classTime, i);
+                string className = entry.Key;
+                foreach (string classTime in entry.Value)
+                {
+                    CreateBox(className, classTime, index);
+                    index++;
+                }
             }
         }
 
@@ -65,15 +54,14 @@ namespace MyNamespace
         {
             GameObject box = new GameObject($"Box_{index}");
             box.transform.SetParent(content.transform, false);
+
             Image image = box.AddComponent<Image>();
             image.color = new Color(0.99f, 0.99f, 0.99f); // Light grey
-
             RectTransform rectTransform = box.GetComponent<RectTransform>();
             rectTransform.sizeDelta = new Vector2(2213, 657);
 
             GameObject textObject = new GameObject("Text");
             textObject.transform.SetParent(box.transform, false);
-
             TextMeshProUGUI textMeshPro = textObject.AddComponent<TextMeshProUGUI>();
             textMeshPro.text = $"{className}\n{classTime}";
             textMeshPro.font = fontAsset;
@@ -84,6 +72,7 @@ namespace MyNamespace
             RectTransform textRectTransform = textObject.GetComponent<RectTransform>();
             textRectTransform.sizeDelta = new Vector2(2213, 657);
         }
+
 
         private void DestroyExistingBoxes()
         {

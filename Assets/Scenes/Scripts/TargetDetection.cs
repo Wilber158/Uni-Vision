@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Collections.Generic;
 using MyNamespace;
 
 namespace MyNamespace
 {
     public class TargetLookChecker : MonoBehaviour
     {
+        private Dictionary<string, List<string>> eventData; // Declaration of eventData
+
         [SerializeField] private GameObject Targets; // GameObject containing all targets as children
         [SerializeField] private Transform userCamera; // Assign your AR camera
         [SerializeField] private float maxAngle = 90f; // Max angle for "looking at"
@@ -83,10 +86,8 @@ namespace MyNamespace
         {
             destinationButton.image.color = reachedColor;
             titleModify.ChangeText(targetName); // Update UI text
-
-            scrapper.TriggerDatabaseData(targetName, () => {
-                createBoxes.UpdateBoxes(targetName); // Update the boxes only after the data is processed
-            });
+            eventData = scrapper.RetrieveEventDataFromDatabase(targetName);
+            createBoxes.UpdateBoxes(eventData); // Update the boxes only after the data is processed
         }
 
         private void ResetFocus()
@@ -94,16 +95,6 @@ namespace MyNamespace
             destinationButton.image.color = normalColor;
             lastTargetName = null; // Reset the last target name as no target is focused
             Debug.Log("No target is currently focused. Resetting color.");
-        }
-
-        private void HandleDataFailure()
-        {
-            string filePath = Path.Combine(Application.persistentDataPath, $"{lastTargetName}_schedule.txt");
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-                Debug.LogError("Database access failed, schedule.txt deleted.");
-            }
         }
     }
 }
