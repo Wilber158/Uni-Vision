@@ -9882,6 +9882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412ce001e69b59408594b053800f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classDropdown: {fileID: 0}
   dbPath: db
 --- !u!114 &1921828771
 MonoBehaviour:
