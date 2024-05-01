@@ -56,7 +56,27 @@ namespace MyNamespace
             box.transform.SetParent(content.transform, false);
 
             Image image = box.AddComponent<Image>();
-            image.color = new Color(0.99f, 0.99f, 0.99f); // Light grey
+
+
+            for (int i = 1; i <= 6; i++)
+            {
+                string current_class = PlayerPrefs.GetString("class" + i);
+                string classNameWithoutSpaces = className.Replace(" ", "");
+
+                if (current_class.Equals(classNameWithoutSpaces, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Match found, change the image color to red
+                    image.color = new Color(1.0f, 0.3f, 0.3f);
+                    // Exit the loop since we found a match
+                    break;
+                }
+                else
+                {
+                    // No match, set the image color to light grey
+                    image.color = new Color(0.99f, 0.99f, 0.99f);
+                }
+            }
+
             RectTransform rectTransform = box.GetComponent<RectTransform>();
             rectTransform.sizeDelta = new Vector2(2213, 657);
 
