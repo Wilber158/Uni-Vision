@@ -8,22 +8,22 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/App Development/test2.unity
     guid: 25d236ed0a1d247129ca5a8dc00deda8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/App Development/Main Screen.unity
     guid: 4d576f638702e47698b98bae1d1786c3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/App Development/ChooseBuilding.unity
     guid: 3229161a10d4b47f7b824fb5bcea32c7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/App Development/RLC_Building.unity
     guid: f2845890a8e4d4f93be88d857c38a1e7
   - enabled: 1
     path: Assets/Scenes/App Development/AccountPage.unity
     guid: c5ebb000417614ac8bc637a2410e9b0e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/App Development/Kelly Building.unity
     guid: 62dd6acf5416a47e9afe17135f8b9825
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/App Development/Miguel Builidng.unity
     guid: 394ca07328d31410eb4ac333b91d385c
   - enabled: 1
