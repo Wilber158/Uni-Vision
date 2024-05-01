@@ -848,10 +848,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1923c9c44c3e947f4b90ff0815f6f5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  session: {fileID: 0}
-  sessionOrigin: {fileID: 0}
-  cameraManager: {fileID: 0}
-  targetParent: {fileID: 0}
+  session: {fileID: 1157685286}
+  sessionOrigin: {fileID: 1720663352}
+  cameraManager: {fileID: 695813763}
+  targetParent: {fileID: 143714089}
   floorSlider: {fileID: 25026127}
 --- !u!224 &185037442
 RectTransform:
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ed50d6f0f514be48aa7edbee6ea5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraToAdjust: {fileID: 0}
+  cameraToAdjust: {fileID: 695813764}
   environmentLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2892,7 +2892,7 @@ PrefabInstance:
         type: 3}
       propertyPath: targetParent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 774509038}
     - target: {fileID: 6793186765544845506, guid: 70c6d0a2af3b04637879c6373e4a2014,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3880,7 +3880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412ce001e69b59408594b053800f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbDirectory: db
+  classDropdown: {fileID: 0}
+  dbPath: db
 --- !u!114 &695813759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4621,7 +4622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ed50d6f0f514be48aa7edbee6ea5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraToAdjust: {fileID: 0}
+  cameraToAdjust: {fileID: 695813764}
   environmentLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -5587,7 +5588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81d202c47d46414482113b0240dcf4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorText: {fileID: 0}
+  floorText: {fileID: 1180358352}
   currentFloor: 0
 --- !u!54 &1087793887
 Rigidbody:
@@ -7403,10 +7404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0beea6e8f52944a1cb5dd9e9a54d114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationTargetDropdown: {fileID: 0}
+  navigationTargetDropdown: {fileID: 2076335062}
   floorManager: {fileID: 1087793886}
-  destinationText: {fileID: 0}
-  destinationReachedGUI: {fileID: 0}
+  destinationText: {fileID: 980380751}
+  destinationReachedGUI: {fileID: 1468696093}
 --- !u!1818360608 &1598717417
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -9000,6 +9001,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064880771}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2076335062 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1412057935633850234, guid: 70c6d0a2af3b04637879c6373e4a2014,
+    type: 3}
+  m_PrefabInstance: {fileID: 596207938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
