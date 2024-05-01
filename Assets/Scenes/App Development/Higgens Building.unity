@@ -533,12 +533,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4ce60622784094c8797c369812243675,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 4ce60622784094c8797c369812243675,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3898,7 +3898,7 @@ MonoBehaviour:
   userCamera: {fileID: 695813757}
   maxAngle: 10
   maxDistance: 9
-  destinationButton: {fileID: 0}
+  destinationButton: {fileID: 821252181}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   reachedColor: {r: 0, g: 1, b: 0, a: 1}
   scrapper: {fileID: 695813758}
@@ -4190,8 +4190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875effc7656bb14cb90d7c4869a21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 0}
-  fontAsset: {fileID: 0}
+  content: {fileID: 733279058}
+  fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
 --- !u!114 &733279061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,29 +4411,29 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1397654264}
-  - {fileID: 601788518}
-  - {fileID: 107606870}
-  - {fileID: 1631175806}
   - {fileID: 1888488992}
-  - {fileID: 1833527259}
+  - {fileID: 1631175806}
+  - {fileID: 107606870}
+  - {fileID: 1790410306}
+  - {fileID: 601788518}
   - {fileID: 1360953757}
-  - {fileID: 271898335}
   - {fileID: 2064880772}
   - {fileID: 1901857949}
   - {fileID: 1593833995}
-  - {fileID: 1137524033}
-  - {fileID: 1562045416}
-  - {fileID: 33927481}
-  - {fileID: 1458141396}
-  - {fileID: 1919779969}
-  - {fileID: 1515237894}
-  - {fileID: 404225520}
-  - {fileID: 1143083854}
   - {fileID: 355869405}
+  - {fileID: 1143083854}
+  - {fileID: 1515237894}
+  - {fileID: 1919779969}
+  - {fileID: 1458141396}
+  - {fileID: 33927481}
   - {fileID: 471240808}
+  - {fileID: 1562045416}
+  - {fileID: 271898335}
+  - {fileID: 1137524033}
+  - {fileID: 404225520}
+  - {fileID: 1833527259}
   - {fileID: 973376778}
-  - {fileID: 1790410306}
+  - {fileID: 1397654264}
   m_Father: {fileID: 953217664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787575870
@@ -4670,9 +4670,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 821252180}
-        m_TargetAssemblyTypeName: CullingMaskController, Assembly-CSharp
-        m_MethodName: ToggleEnvironmentLayer
+      - m_Target: {fileID: 307136329}
+        m_TargetAssemblyTypeName: ToggleCanvasVisibility, Assembly-CSharp
+        m_MethodName: ToggleVisibility
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4802,7 +4802,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1598717416}
         m_TargetAssemblyTypeName: SetNavigationTarget, Assembly-CSharp
         m_MethodName: ToggleNavigationLine
         m_Mode: 1
@@ -4915,12 +4915,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b1e034234db7413ab2a45d66a516331,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 0b1e034234db7413ab2a45d66a516331,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6646,8 +6646,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397654263}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05000019, y: -0.7901169, z: 131.464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.05000019, y: -0.79011697, z: 131.464}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6997,7 +6997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1507205768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8650,7 +8650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919779968}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -44.84671, y: -1.0998833, z: 113.77}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -8794,12 +8794,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9db792d61e35c4fd587c4ce47176c4a5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 9db792d61e35c4fd587c4ce47176c4a5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
