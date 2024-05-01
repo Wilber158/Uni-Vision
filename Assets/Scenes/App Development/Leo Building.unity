@@ -6206,7 +6206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412ce001e69b59408594b053800f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbDirectory: Resources/db
+  classDropdown: {fileID: 0}
+  dbPath: db
 --- !u!114 &595119868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19700,7 +19701,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1073742015
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
