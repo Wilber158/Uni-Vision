@@ -8128,6 +8128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412ce001e69b59408594b053800f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classDropdown: {fileID: 0}
   dbPath: db
 --- !u!1 &1641350905
 GameObject:
@@ -10933,7 +10934,6 @@ SceneRoots:
   - {fileID: 1220577087}
   - {fileID: 1768638271}
   - {fileID: 1488583023}
-  - {fileID: 1768638271}
   - {fileID: 765731783}
   - {fileID: 1968602745}
   - {fileID: 1860286038}
