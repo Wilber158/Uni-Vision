@@ -2,10 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System;
-using System.Text.RegularExpressions;  // Ensure you include this for regex support
+using System.Text.RegularExpressions;  // Ensure you include this for regex supportusing TMPro;
+using TMPro;
+
 
 public class SeleniumExample : MonoBehaviour
 {
+     [SerializeField]
+    private TMP_Dropdown classDropdown;
     [SerializeField] private string dbPath = "db"; // Path to the centralized database under Resources or StreamingAssets
 
     private string GetDatabasePath()
@@ -114,5 +118,47 @@ public class SeleniumExample : MonoBehaviour
         }
 
         return eventData;
+    }
+
+    private void PopulateClassDropdown()
+    {
+        List<string> classes = GetClassesFromDatabase();
+        if (classes == null) return; // If no classes were found or an error occurred
+
+        classDropdown.ClearOptions(); // Clear existing options
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
+
+        foreach (var className in classes)
+        {
+            options.Add(new TMP_Dropdown.OptionData(className));
+        }
+
+        classDropdown.AddOptions(options); // Add new options to the TMP Dropdown
+    }
+
+    private List<string> GetClassesFromDatabase()
+    {
+        List<string> classes = new List<string>();
+        string databasePath = GetDatabasePath();
+        if (databasePath == null) return null;
+
+        string connectionString = $"Data Source={databasePath};Version=3;";
+        using (var connection = new Mono.Data.Sqlite.SqliteConnection(connectionString))
+        {
+            connection.Open();
+            string query = "SELECT DISTINCT dept_id || ' ' || course_id AS class FROM Course";
+            using (var command = new Mono.Data.Sqlite.SqliteCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string className = reader["class"].ToString();
+                        classes.Add(className);
+                    }
+                }
+            }
+        }
+        return classes;
     }
 }
