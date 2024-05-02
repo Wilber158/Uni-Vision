@@ -86,7 +86,7 @@ public class ClassDropdownManager : MonoBehaviour
         }); classList.Add(new ClassInfo
         {
             className = "CMPT",
-            classNumbers = new List<int> { 101, 102, 155, 238, 353, 360, 364, 439, 456, 466, 477 }
+            classNumbers = new List<int> {101,102,155,238,353,360,364,439,456,466,477,490}
         }); classList.Add(new ClassInfo
         {
             className = "CMPG",
