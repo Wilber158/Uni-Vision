@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour
     public GameObject targetObject2;
     public TMP_InputField inputField2;
     public GameObject inputFieldMain2;
+    public GameObject button;
 
     private const string textKey = "studentName";
     private const string textKey2 = "studentID";
@@ -100,6 +101,7 @@ public class InputHandler : MonoBehaviour
                 }
                 inputFieldMain2.SetActive(false);
             }
+            button.SetActive(false);
         }
     }
 }

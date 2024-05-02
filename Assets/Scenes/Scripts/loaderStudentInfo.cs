@@ -8,7 +8,7 @@ public class loaderStudentInfo : MonoBehaviour
     public GameObject inputObject; // inputfield
     public GameObject targetObject; //studentName
     public TextMeshProUGUI inputField; // placeholder
-
+    public GameObject button;
     public GameObject inputObject2; // inputfield
     public GameObject targetObject2; //studentName
     public TextMeshProUGUI inputField2; // placeholder
@@ -27,6 +27,7 @@ public class loaderStudentInfo : MonoBehaviour
             targetObject2.SetActive(true);
             inputField2.text = PlayerPrefs.GetString("studentID");
             inputObject2.SetActive(false);
+            button.SetActive(false);
         }
     }
 
