@@ -8,6 +8,7 @@ public class resetStudentID : MonoBehaviour
     public TMP_InputField inputField;
     public GameObject inputFieldMain;
     public string placeholderText = "Enter your student ID:";
+    public GameObject button;
 
 
     public void delete()
@@ -18,5 +19,6 @@ public class resetStudentID : MonoBehaviour
         inputObject.SetActive(false);
         inputField.text = "";
         inputField.placeholder.GetComponent<TextMeshProUGUI>().text = placeholderText;
+        button.SetActive(true);
     }
 }
