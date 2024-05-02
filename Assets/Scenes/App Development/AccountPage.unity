@@ -1302,6 +1302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classNameDropdown: {fileID: 104733165}
   classNumberDropdown: {fileID: 97011395}
+  dropdownItemPrefab: {fileID: 0}
+  dropdownItemHeight: 40
 --- !u!222 &97011398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6111,6 +6113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classNameDropdown: {fileID: 1551716143}
   classNumberDropdown: {fileID: 555127818}
+  dropdownItemPrefab: {fileID: 0}
+  dropdownItemHeight: 40
 --- !u!222 &555127821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10995,6 +10999,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classNameDropdown: {fileID: 1757956943}
   classNumberDropdown: {fileID: 1063648422}
+  dropdownItemPrefab: {fileID: 0}
+  dropdownItemHeight: 40
 --- !u!222 &1063648425
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13275,6 +13281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classNameDropdown: {fileID: 201474445}
   classNumberDropdown: {fileID: 1226348472}
+  dropdownItemPrefab: {fileID: 0}
+  dropdownItemHeight: 40
 --- !u!114 &1226348470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13986,6 +13994,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classNameDropdown: {fileID: 2106682351}
   classNumberDropdown: {fileID: 1252858785}
+  dropdownItemPrefab: {fileID: 0}
+  dropdownItemHeight: 40
 --- !u!222 &1252858788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15091,7 +15101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: 95}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382772407
@@ -20867,6 +20877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classNameDropdown: {fileID: 1363929435}
   classNumberDropdown: {fileID: 1882587621}
+  dropdownItemPrefab: {fileID: 0}
+  dropdownItemHeight: 40
 --- !u!1 &1930461289
 GameObject:
   m_ObjectHideFlags: 0
