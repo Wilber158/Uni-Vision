@@ -2471,6 +2471,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fifth Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 851eb80b5acff420a939aa278048d03a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 851eb80b5acff420a939aa278048d03a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2810,6 +2820,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Second Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca6d49c86456945f0ad6d04bfb77a5b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: ca6d49c86456945f0ad6d04bfb77a5b8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3452,7 +3472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602807309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4039,6 +4059,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Third Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e76ca5c022a1a43d9913e6683360767a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e76ca5c022a1a43d9913e6683360767a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4798,15 +4828,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1243769316}
-  - {fileID: 1003119651}
   - {fileID: 1857539894}
-  - {fileID: 1694507644}
+  - {fileID: 1243769316}
   - {fileID: 1527775019}
+  - {fileID: 1694507644}
+  - {fileID: 1003119651}
   - {fileID: 606091672}
-  - {fileID: 617801010}
   - {fileID: 1596577769}
   - {fileID: 583910539}
+  - {fileID: 617801010}
   - {fileID: 586676502}
   - {fileID: 1672431993}
   - {fileID: 154782879}
@@ -6535,6 +6565,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fourth Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82ec2d291f1fa4326829900393d68a19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 82ec2d291f1fa4326829900393d68a19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

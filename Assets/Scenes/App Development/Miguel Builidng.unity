@@ -330,7 +330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.908175, y: 0.001637977}
+  m_AnchoredPosition: {x: 2.908175, y: -0.0070093907}
   m_SizeDelta: {x: 3125.8, y: 3869.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &26344757
@@ -1040,6 +1040,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Basement
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c6b1f7c8397a14d4aafaac661da295b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: c6b1f7c8397a14d4aafaac661da295b1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1952,7 +1962,7 @@ Transform:
   m_GameObject: {fileID: 256746078}
   serializedVersion: 2
   m_LocalRotation: {x: 0.76604444, y: 0, z: 0, w: 0.64278764}
-  m_LocalPosition: {x: -4.1835213, y: 5.701906, z: 7.579999}
+  m_LocalPosition: {x: -4.1835213, y: 10.721906, z: 8.840001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2337,7 +2347,7 @@ Transform:
   m_GameObject: {fileID: 354124180}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.75, y: -1.38, z: 31.87}
+  m_LocalPosition: {x: 55.75, y: 0.89, z: 30.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4050,6 +4060,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Third Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e007086dbccab4eb0b7e2a75f8274137,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e007086dbccab4eb0b7e2a75f8274137,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4514,7 +4534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c7ebc9a1a48403e9541d126f16b0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Targets: {fileID: 0}
+  Targets: {fileID: 1799914853}
   userCamera: {fileID: 905244623}
   maxAngle: 15
   maxDistance: 9
@@ -4718,14 +4738,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905244615}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.073, y: 0, z: -2.61}
+  m_LocalRotation: {x: -0, y: 0.695293, z: -0, w: 0.71872646}
+  m_LocalPosition: {x: -0.07300186, y: 2.27, z: -3.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1855925430}
   m_Father: {fileID: 1045547511}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 88.101, z: 0}
 --- !u!1 &937506945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,7 +4895,7 @@ Transform:
   m_GameObject: {fileID: 952742840}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.6, y: 0, z: 29.19}
+  m_LocalPosition: {x: 58.6, y: 0, z: 27.97}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5170,7 +5190,7 @@ Transform:
   m_GameObject: {fileID: 961222636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.773518, y: -3.7880936, z: 4.869998}
+  m_LocalPosition: {x: -5.773518, y: 1.2319062, z: 6.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5992,7 +6012,7 @@ Transform:
   m_GameObject: {fileID: 1137423332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58, y: 1.29, z: 19.361862}
+  m_LocalPosition: {x: 55.75, y: 1.23, z: 30.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6893,7 +6913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1468871517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7412,7 +7432,7 @@ MonoBehaviour:
   session: {fileID: 354124181}
   sessionOrigin: {fileID: 2121297806}
   cameraManager: {fileID: 905244622}
-  targetParent: {fileID: 0}
+  targetParent: {fileID: 1034978296}
   floorSlider: {fileID: 1905958490}
 --- !u!224 &1711705501
 RectTransform:
@@ -8805,6 +8825,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Second Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1eec480d991eb4819bea7bf09440edf1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1eec480d991eb4819bea7bf09440edf1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9291,7 +9321,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: ae3deb99738914cf5919fddd24c888cf, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 80597068f5b5d4750a97ff4bcda6d260, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &2100078665
 Transform:
@@ -9545,7 +9575,7 @@ Transform:
   m_GameObject: {fileID: 2121297804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.8, y: -1.34, z: 33.68}
+  m_LocalPosition: {x: 55.8, y: -1.34, z: 34.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10185,7 +10215,7 @@ PrefabInstance:
         type: 3}
       propertyPath: targetParent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1799914853}
     - target: {fileID: 6793186765544845506, guid: 70c6d0a2af3b04637879c6373e4a2014,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10498,14 +10528,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1604603040}
+  - {fileID: 2100078665}
+  - {fileID: 1137423334}
+  - {fileID: 2121297805}
+  - {fileID: 952742842}
   - {fileID: 1383473503}
   - {fileID: 547481537}
+  - {fileID: 2146673763}
   - {fileID: 354124183}
   - {fileID: 189880203}
-  - {fileID: 2121297805}
   - {fileID: 1711705501}
-  - {fileID: 1137423334}
-  - {fileID: 2146673763}
-  - {fileID: 952742842}
-  - {fileID: 2100078665}
   - {fileID: 555544054}

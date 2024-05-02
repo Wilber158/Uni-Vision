@@ -533,12 +533,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4ce60622784094c8797c369812243675,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 4ce60622784094c8797c369812243675,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3880,7 +3880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412ce001e69b59408594b053800f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbDirectory: db
+  classDropdown: {fileID: 0}
+  dbPath: db
 --- !u!114 &695813759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4914,12 +4915,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b1e034234db7413ab2a45d66a516331,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 0b1e034234db7413ab2a45d66a516331,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6996,7 +6997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1507205768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8793,12 +8794,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9db792d61e35c4fd587c4ce47176c4a5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 9db792d61e35c4fd587c4ce47176c4a5,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
